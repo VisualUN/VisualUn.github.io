@@ -64,9 +64,9 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html')}>Example Link</Button>
-            <Button href={docUrl('doc2.html')}>Example Link 2</Button>
+            <Button href={docUrl('doc1.html')}>Conversión a escala de grises</Button>
+            <Button href={docUrl('doc2.html')}>Example Link</Button>
+            <Button href={docUrl('doc3.html')}>Example Link 2</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -96,7 +96,7 @@ class Index extends React.Component {
       <div
         className="productShowcaseSection paddingBottom"
         style={{textAlign: 'center'}}>
-        <h2>Feature Callout</h2>
+        <h2>Integrantes del equipo</h2>
         <MarkdownBlock>These are features of this project</MarkdownBlock>
       </div>
     );
@@ -135,11 +135,12 @@ class Index extends React.Component {
       <Block background="light">
         {[
           {
+
             content:
-              'Each new Docusaurus project has **randomly-generated** theme colors.',
+              'Esteban Jaramillo Sarmiento  </br> David Steven Castillo Lopez  </br> Juan Sebastian Ensuncho Picon </br> Pedro Alejandro Valderrama Tapias </br> Diego Alejandro Gutierrez Rojas </br>Johan Sebastian Medina Cañizares',
             image: `${baseUrl}img/undraw_youtube_tutorial.svg`,
             imageAlign: 'right',
-            title: 'Randomly Generated Theme Colors',
+            title: 'Integrantes del equipo',
           },
         ]}
       </Block>
@@ -149,16 +150,16 @@ class Index extends React.Component {
       <Block layout="fourColumn">
         {[
           {
-            content: 'This is the content of my feature',
+            content: '',
             image: `${baseUrl}img/undraw_react.svg`,
             imageAlign: 'top',
-            title: 'Feature One',
+            title: '<a href="https://github.com/VisualUN">Link a la organización en github</a>',
           },
           {
-            content: 'The content of my second feature',
+            content: '',
             image: `${baseUrl}img/undraw_operating_system.svg`,
             imageAlign: 'top',
-            title: 'Feature Two',
+            title: '<a href="https://github.com/VisualUN/Processing">Link al repositorio de processing</a>',
           },
         ]}
       </Block>
@@ -199,11 +200,11 @@ class Index extends React.Component {
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Features />
-          <FeatureCallout />
+          {/* <FeatureCallout /> */}
           <LearnHow />
           <TryOut />
-          <Description />
-          <Showcase />
+          {/*<Description />*/}
+          {/*<Showcase />*/}
         </div>
       </div>
     );

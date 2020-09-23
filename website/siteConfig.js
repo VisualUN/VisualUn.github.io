@@ -22,7 +22,7 @@ const users = [
 
 const siteConfig = {
   title: 'Visual UN', // Title for your website.
-  tagline: 'Un sitio web para el curso de Computación Visual',
+  tagline: 'Sitio web Computación Visual UN',
   url: 'https://VisualUn.github.io', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -38,7 +38,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
+    {doc: 'doc1', label: 'Implementaciones'},
     {doc: 'doc4', label: 'API'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
@@ -73,7 +73,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} Universidad Nacional de Colombia`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
