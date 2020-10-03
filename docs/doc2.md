@@ -68,7 +68,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/afilar.png)
+![alt-text](assets/afilar.PNG)
 
 ## Mascara para afilar en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_afilar_video)
@@ -198,7 +198,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/desenfocar.png)
+![alt-text](assets/desenfocar.PNG)
 
 ## Mascara para desenfocar en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desenfoque_video)
@@ -327,7 +327,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/desGauss3x3.png)
+![alt-text](assets/desGauss3x3.PNG)
 
 ## Mascara de desenfoque Gaussiano con matriz 3x3 en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desGauss3x3_video)
@@ -456,7 +456,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/desGauss5x5.png)
+![alt-text](assets/desGauss5x5.PNG)
 
 ## Mascara de desenfoque Gaussiano con matriz 5x5 en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desGauss5x5_video)
@@ -586,7 +586,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/detBordes1.png)
+![alt-text](assets/detBordes1.PNG)
 
 ## Primera mascara de detección de bordes en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes1_video)
@@ -715,7 +715,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/detBordes2.png)
+![alt-text](assets/detBordes2.PNG)
 
 ## Segunda mascara de detección de bordes en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes2_video)
@@ -842,7 +842,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/detBordes3.png)
+![alt-text](assets/detBordes3.PNG)
 
 ## Tercera mascara de detección de bordes en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes3_video)
@@ -967,7 +967,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/identidad.png)
+![alt-text](assets/identidad.PNG)
 
 ## Mascara identidad en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_identidad_video)
@@ -1098,7 +1098,7 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
 }
 ```
 ### Resultado:
-![alt-text](assets/enfoque.png)
+![alt-text](assets/enfoque.PNG)
 
 ## Mascara de enfoque con matrix 5x5 en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_Masc_Desenf5x5_video)
