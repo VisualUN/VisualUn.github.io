@@ -3,14 +3,15 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "Un sitio web para el curso de Computación Visual",
+    "tagline": "Sitio web Computación Visual UN",
     "docs": {
       "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
+        "title": "Conversión a escala de grises mediante promedio rgb, luma y otros métodos",
+        "sidebar_label": "Conversión a escala de grises"
       },
       "doc2": {
-        "title": "document number 2"
+        "title": "Máscaras de convolución",
+        "sidebar_label": "Máscaras de convolución"
       },
       "doc3": {
         "title": "This is document number 3"
@@ -23,15 +24,15 @@
       }
     },
     "links": {
-      "Docs": "Docs",
+      "Implementaciones": "Implementaciones",
       "API": "API",
       "Help": "Help",
       "Blog": "Blog"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "Implementaciones": "Implementaciones",
+      "Second Category": "Second Category",
+      "First Category": "First Category"
     }
   },
   "pages-strings": {
