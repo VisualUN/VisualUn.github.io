@@ -1164,5 +1164,521 @@ void draw() {
 }
 ```
 
+## Mascara de deteccion de lineas en 45 grados
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/convolution/Convolution_45_line_det)
+```
+PImage img;
+int w = 120;
+// Convolution example based on the one made by Daniel Shiffman. 
+// It's possible to convolve the image with many different 
+// matrices to produce different effects. This detects 45 degree lines 
+float[][] matrix = { { -1, -1, 2 },
+                     { -1, 2, -1 },
+                     { 2, -1, -1 } };
+
+void setup() {
+  size(800, 400);
+  img = loadImage("rgb.jpg"); 
+  img.resize(400, 400);
+  image(img, width/2, 0, width, height);
+  int matrixsize = 3;
+  
+  for (int x = width/2; x < width; x++) {
+    for (int y = 0; y < height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      set(x, y, c);
+    }
+  }
+  //updatePixels();
+  image(img, 0, 0, width/2, height);
+}
+
+void draw() {
+  
+}
+
+color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
+{
+  float rtotal = 0.0;
+  float gtotal = 0.0;
+  float btotal = 0.0;
+  int offset = matrixsize / 2;
+  for (int i = 0; i < matrixsize; i++){
+    for (int j= 0; j < matrixsize; j++){
+      // What pixel are we testing
+      int xloc = x+i-offset;
+      int yloc = y+j-offset;
+      int loc = xloc + img.width*yloc;
+      // Make sure we haven't walked off our image, we could do better here
+      loc = constrain(loc,0,img.pixels.length-1);
+      // Calculate the convolution
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  // Make sure RGB is within range
+  rtotal = constrain(rtotal, 0, 255);
+  gtotal = constrain(gtotal, 0, 255);
+  btotal = constrain(btotal, 0, 255);
+  // Return the resulting color
+  return color(rtotal, gtotal, btotal);
+}
+```
+### Resultado:
+![alt-text](assets/45_degrees.PNG)
+
+## Mascara de deteccion de lineas en 135 grados
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/convolution/Convolution_135_line_det)
+```
+PImage img;
+int w = 120;
+// Convolution example based on the one made by Daniel Shiffman. 
+// It's possible to convolve the image with many different 
+// matrices to produce different effects. This detects 135 degree lines 
+float[][] matrix = { { 2, -1, -1 },
+                     { -1, 2, -1 },
+                     {-1, -1, 2 } };
+
+void setup() {
+  size(800, 400);
+  img = loadImage("rgb.jpg"); 
+  img.resize(400, 400);
+  image(img, width/2, 0, width, height);
+  int matrixsize = 3;
+  
+  for (int x = width/2; x < width; x++) {
+    for (int y = 0; y < height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      set(x, y, c);
+    }
+  }
+  //updatePixels();
+  image(img, 0, 0, width/2, height);
+}
+
+void draw() {
+  
+}
+
+color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
+{
+  float rtotal = 0.0;
+  float gtotal = 0.0;
+  float btotal = 0.0;
+  int offset = matrixsize / 2;
+  for (int i = 0; i < matrixsize; i++){
+    for (int j= 0; j < matrixsize; j++){
+      // What pixel are we testing
+      int xloc = x+i-offset;
+      int yloc = y+j-offset;
+      int loc = xloc + img.width*yloc;
+      // Make sure we haven't walked off our image, we could do better here
+      loc = constrain(loc,0,img.pixels.length-1);
+      // Calculate the convolution
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  // Make sure RGB is within range
+  rtotal = constrain(rtotal, 0, 255);
+  gtotal = constrain(gtotal, 0, 255);
+  btotal = constrain(btotal, 0, 255);
+  // Return the resulting color
+  return color(rtotal, gtotal, btotal);
+}
+```
+### Resultado:
+![alt-text](assets/135_degrees.PNG)
+
+## Otra Mascara de desenfoque gaussiano
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/convolution/Convolution_gaussian)
+```
+PImage img;
+int w = 120;
+// Convolution example based on the one made by Daniel Shiffman. 
+// It's possible to convolve the image with many different 
+// matrices to produce different effects. This is another filter
+//for a gaussian blur
+float[][] matrix = { { 1, 1, 1 },
+                     { 1, 4, 1 },
+                     { 1, 1, 1 } };
+
+void setup() {
+  size(800, 400);
+  img = loadImage("rgb.jpg"); 
+  img.resize(400, 400);
+  image(img, width/2, 0, width, height);
+  int matrixsize = 3;
+  
+  for (int x = width/2; x < width; x++) {
+    for (int y = 0; y < height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      set(x, y, c);
+    }
+  }
+  //updatePixels();
+  image(img, 0, 0, width/2, height);
+}
+
+void draw() {
+  
+}
+
+color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
+{
+  float rtotal = 0.0;
+  float gtotal = 0.0;
+  float btotal = 0.0;
+  int offset = matrixsize / 2;
+  for (int i = 0; i < matrixsize; i++){
+    for (int j= 0; j < matrixsize; j++){
+      // What pixel are we testing
+      int xloc = x+i-offset;
+      int yloc = y+j-offset;
+      int loc = xloc + img.width*yloc;
+      // Make sure we haven't walked off our image, we could do better here
+      loc = constrain(loc,0,img.pixels.length-1);
+      // Calculate the convolution
+      rtotal += (red(img.pixels[loc]) * 1/8 * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * 1/8 * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * 1/8 * matrix[i][j]);
+    }
+  }
+  // Make sure RGB is within range
+  rtotal = constrain(rtotal, 0, 255);
+  gtotal = constrain(gtotal, 0, 255);
+  btotal = constrain(btotal, 0, 255);
+  // Return the resulting color
+  return color(rtotal, gtotal, btotal);
+}
+```
+### Resultado:
+![alt-text](assets/gaussian_def.PNG)
+
+## Mascara de filtro pasa alta
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/convolution/Convolution_high_pass)
+```
+PImage img;
+int w = 120;
+// Convolution example based on the one made by Daniel Shiffman. 
+// It's possible to convolve the image with many different 
+// matrices to produce different effects. This is a high-pass 
+// filter; it accentuates the edges. 
+float[][] matrix = { { -1, -1, -1 },
+                     { -1,  9, -1 },
+                     { -1, -1, -1 } };
+
+void setup() {
+  size(800, 400);
+  img = loadImage("rgb.jpg"); 
+  img.resize(400, 400);
+  image(img, width/2, 0, width, height);
+  int matrixsize = 3;
+  
+  for (int x = width/2; x < width; x++) {
+    for (int y = 0; y < height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      set(x, y, c);
+    }
+  }
+  //updatePixels();
+  image(img, 0, 0, width/2, height);
+}
+
+void draw() {
+  
+}
+
+color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
+{
+  float rtotal = 0.0;
+  float gtotal = 0.0;
+  float btotal = 0.0;
+  int offset = matrixsize / 2;
+  for (int i = 0; i < matrixsize; i++){
+    for (int j= 0; j < matrixsize; j++){
+      // What pixel are we testing
+      int xloc = x+i-offset;
+      int yloc = y+j-offset;
+      int loc = xloc + img.width*yloc;
+      // Make sure we haven't walked off our image, we could do better here
+      loc = constrain(loc,0,img.pixels.length-1);
+      // Calculate the convolution
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  // Make sure RGB is within range
+  rtotal = constrain(rtotal, 0, 255);
+  gtotal = constrain(gtotal, 0, 255);
+  btotal = constrain(btotal, 0, 255);
+  // Return the resulting color
+  return color(rtotal, gtotal, btotal);
+}
+```
+### Resultado:
+![alt-text](assets/high_pass.PNG)
+
+## Mascara de deteccion de lineas horizontales
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/convolution/Convolution_horizontal_line_det)
+```
+PImage img;
+int w = 120;
+// Convolution example based on the one made by Daniel Shiffman. 
+// It's possible to convolve the image with many different 
+// matrices to produce different effects. This is a horizontal line detector
+float[][] matrix = { { -1, -1, -1 },
+                     { 2, 2, 2 },
+                     { -1, -1, -1 } };
+
+void setup() {
+  size(800, 400);
+  img = loadImage("rgb.jpg"); 
+  img.resize(400, 400);
+  image(img, width/2, 0, width, height);
+  int matrixsize = 3;
+  
+  for (int x = width/2; x < width; x++) {
+    for (int y = 0; y < height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      set(x, y, c);
+    }
+  }
+  //updatePixels();
+  image(img, 0, 0, width/2, height);
+}
+
+void draw() {
+  
+}
+
+color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
+{
+  float rtotal = 0.0;
+  float gtotal = 0.0;
+  float btotal = 0.0;
+  int offset = matrixsize / 2;
+  for (int i = 0; i < matrixsize; i++){
+    for (int j= 0; j < matrixsize; j++){
+      // What pixel are we testing
+      int xloc = x+i-offset;
+      int yloc = y+j-offset;
+      int loc = xloc + img.width*yloc;
+      // Make sure we haven't walked off our image, we could do better here
+      loc = constrain(loc,0,img.pixels.length-1);
+      // Calculate the convolution
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  // Make sure RGB is within range
+  rtotal = constrain(rtotal, 0, 255);
+  gtotal = constrain(gtotal, 0, 255);
+  btotal = constrain(btotal, 0, 255);
+  // Return the resulting color
+  return color(rtotal, gtotal, btotal);
+}
+```
+### Resultado:
+![alt-text](assets/horizontal_det.PNG)
+
+## Mascara de deteccion de lineas horizontales sobel
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/convolution/Convolution_horizontal_sobel_edge_line_det)
+```
+PImage img;
+int w = 120;
+// Convolution example based on the one made by Daniel Shiffman. 
+// It's possible to convolve the image with many different 
+// matrices to produce different effects. This is a horizontal sobel edge 
+//operator, its used to reduce noise
+float[][] matrix = { { -1, -2, -1 },
+                     { 0, 0, 0 },
+                     { 1, 2, 1 } };
+
+void setup() {
+  size(800, 400);
+  img = loadImage("rgb.jpg"); 
+  img.resize(400, 400);
+  image(img, width/2, 0, width, height);
+  int matrixsize = 3;
+  
+  for (int x = width/2; x < width; x++) {
+    for (int y = 0; y < height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      set(x, y, c);
+    }
+  }
+  //updatePixels();
+  image(img, 0, 0, width/2, height);
+}
+
+void draw() {
+  
+}
+
+color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
+{
+  float rtotal = 0.0;
+  float gtotal = 0.0;
+  float btotal = 0.0;
+  int offset = matrixsize / 2;
+  for (int i = 0; i < matrixsize; i++){
+    for (int j= 0; j < matrixsize; j++){
+      // What pixel are we testing
+      int xloc = x+i-offset;
+      int yloc = y+j-offset;
+      int loc = xloc + img.width*yloc;
+      // Make sure we haven't walked off our image, we could do better here
+      loc = constrain(loc,0,img.pixels.length-1);
+      // Calculate the convolution
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  // Make sure RGB is within range
+  rtotal = constrain(rtotal, 0, 255);
+  gtotal = constrain(gtotal, 0, 255);
+  btotal = constrain(btotal, 0, 255);
+  // Return the resulting color
+  return color(rtotal, gtotal, btotal);
+}
+```
+### Resultado:
+![alt-text](assets/horizontal_sobel.PNG)
+
+## Mascara de deteccion de lineas verticales
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/convolution/Convolution_vertical_line_det)
+```
+PImage img;
+int w = 120;
+// Convolution example based on the one made by Daniel Shiffman. 
+// It's possible to convolve the image with many different 
+// matrices to produce different effects. This detects the vertical lines 
+float[][] matrix = { { -1, 2, -1 },
+                     { -1, 2, -1 },
+                     { -1, 2, -1 } };
+
+void setup() {
+  size(800, 400);
+  img = loadImage("rgb.jpg"); 
+  img.resize(400, 400);
+  image(img, width/2, 0, width, height);
+  int matrixsize = 3;
+  
+  for (int x = width/2; x < width; x++) {
+    for (int y = 0; y < height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      set(x, y, c);
+    }
+  }
+  //updatePixels();
+  image(img, 0, 0, width/2, height);
+}
+
+void draw() {
+  
+}
+
+color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
+{
+  float rtotal = 0.0;
+  float gtotal = 0.0;
+  float btotal = 0.0;
+  int offset = matrixsize / 2;
+  for (int i = 0; i < matrixsize; i++){
+    for (int j= 0; j < matrixsize; j++){
+      // What pixel are we testing
+      int xloc = x+i-offset;
+      int yloc = y+j-offset;
+      int loc = xloc + img.width*yloc;
+      // Make sure we haven't walked off our image, we could do better here
+      loc = constrain(loc,0,img.pixels.length-1);
+      // Calculate the convolution
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  // Make sure RGB is within range
+  rtotal = constrain(rtotal, 0, 255);
+  gtotal = constrain(gtotal, 0, 255);
+  btotal = constrain(btotal, 0, 255);
+  // Return the resulting color
+  return color(rtotal, gtotal, btotal);
+}
+```
+### Resultado:
+![alt-text](assets/vertical_det.PNG)
+
+## Mascara de deteccion de lineas verticales sobel
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/convolution/Convolution_verticall_sobel_edge_line_det)
+```
+PImage img;
+int w = 120;
+// Convolution example based on the one made by Daniel Shiffman. 
+// It's possible to convolve the image with many different 
+// matrices to produce different effects. This is a vertical sobel edge 
+//operator, its used to reduce noise
+float[][] matrix = { { -1, 0, 1 },
+                     { -2, 0, 2 },
+                     { -1, 0, 1 } };
+
+void setup() {
+  size(800, 400);
+  img = loadImage("rgb.jpg"); 
+  img.resize(400, 400);
+  image(img, width/2, 0, width, height);
+  int matrixsize = 3;
+  
+  for (int x = width/2; x < width; x++) {
+    for (int y = 0; y < height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      set(x, y, c);
+    }
+  }
+  //updatePixels();
+  image(img, 0, 0, width/2, height);
+}
+
+void draw() {
+  
+}
+
+color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
+{
+  float rtotal = 0.0;
+  float gtotal = 0.0;
+  float btotal = 0.0;
+  int offset = matrixsize / 2;
+  for (int i = 0; i < matrixsize; i++){
+    for (int j= 0; j < matrixsize; j++){
+      // What pixel are we testing
+      int xloc = x+i-offset;
+      int yloc = y+j-offset;
+      int loc = xloc + img.width*yloc;
+      // Make sure we haven't walked off our image, we could do better here
+      loc = constrain(loc,0,img.pixels.length-1);
+      // Calculate the convolution
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  // Make sure RGB is within range
+  rtotal = constrain(rtotal, 0, 255);
+  gtotal = constrain(gtotal, 0, 255);
+  btotal = constrain(btotal, 0, 255);
+  // Return the resulting color
+  return color(rtotal, gtotal, btotal);
+}
+```
+### Resultado:
+![alt-text](assets/vertical_sobel.PNG)
 This is a link to [another document.](doc3.md)  
 This is a link to an [external page.](http://www.example.com)
+
