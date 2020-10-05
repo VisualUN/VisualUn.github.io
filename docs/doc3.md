@@ -1,7 +1,7 @@
 ---
-id: doc2
-title: Máscaras de convolución
-sidebar_label: Máscaras de convolución
+id: doc3
+title: Rendimiento computacional
+sidebar_label: Rendimiento computacional
 ---
 
 ## Rendimiento computacional para afilar en video
