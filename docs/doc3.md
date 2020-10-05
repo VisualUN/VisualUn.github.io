@@ -1,7 +1,7 @@
 ---
-id: doc2
-title: Máscaras de convolución
-sidebar_label: Máscaras de convolución
+id: doc3
+title: Rendimiento computacional
+sidebar_label: Rendimiento computacional
 ---
 
 ## Rendimiento computacional para afilar en video
@@ -76,7 +76,7 @@ void draw() {
 ![alt-text](assets/afilarFPS.PNG)
 
 
-## ## Rendimiento computacional para desenfocar en video
+## Rendimiento computacional para desenfocar en video
 Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desenfoque_video)
 
 ```
@@ -146,7 +146,7 @@ void draw() {
 }
 ```
 ### Resultado:
-![alt-text](assets/desenfocarPFS)
+![alt-text](assets/desenfocarPFS.PNG)
 
 
 ## Rendimiento computacional para desenfoque Gaussiano con matriz 3x3 en video

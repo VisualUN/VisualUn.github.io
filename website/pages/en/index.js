@@ -66,8 +66,9 @@ class HomeSplash extends React.Component {
           <PromoSection>
             <Button href={docUrl('doc1.html')}>Conversión a escala de grises</Button>
             <Button href={docUrl('doc2.html')}>Mascaras de convolución</Button>
+            <Button href={docUrl('doc3.html')}>Rendimiento computacional</Button>
             <Button href={docUrl('doc7.html')}>Histograma</Button>
-            <Button href={docUrl('doc3.html')}>Example Link 2</Button>            
+            <Button href={docUrl('doc4.html')}>Example Link 2</Button>
           </PromoSection>
         </div>
       </SplashContainer>
