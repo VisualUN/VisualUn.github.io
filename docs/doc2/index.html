@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Máscaras de convolución · Visual UN</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Rendimiento computacional para afilar en video"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Máscaras de convolución · Visual UN"/><meta property="og:type" content="website"/><meta property="og:url" content="https://VisualUn.github.io/"/><meta property="og:description" content="## Rendimiento computacional para afilar en video"/><meta property="og:image" content="https://VisualUn.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://VisualUn.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://VisualUn.github.io/blog/atom.xml" title="Visual UN Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://VisualUn.github.io/blog/feed.xml" title="Visual UN Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="Visual UN"/><h2 class="headerTitleWithLogo">Visual UN</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/doc1" target="_self">Implementaciones</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/doc2" target="_self">Implementaciones</a></li><li class=""><a href="/docs/doc4" target="_self">API</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Implementaciones</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Implementaciones</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/doc1">Conversión a escala de grises</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/doc2">Máscaras de convolución</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Máscaras de convolución · Visual UN</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Mascara para afilar en imagenes"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Máscaras de convolución · Visual UN"/><meta property="og:type" content="website"/><meta property="og:url" content="https://VisualUn.github.io/"/><meta property="og:description" content="## Mascara para afilar en imagenes"/><meta property="og:image" content="https://VisualUn.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://VisualUn.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://VisualUn.github.io/blog/atom.xml" title="Visual UN Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://VisualUn.github.io/blog/feed.xml" title="Visual UN Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="Visual UN"/><h2 class="headerTitleWithLogo">Visual UN</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/doc1" target="_self">Implementaciones</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/docs/doc2" target="_self">Implementaciones</a></li><li class=""><a href="/docs/doc4" target="_self">API</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Implementaciones</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Implementaciones</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/doc1">Conversión a escala de grises</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/doc2">Máscaras de convolución</a></li><li class="navListItem"><a class="navItem" href="/docs/doc3">Rendimiento computacional</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -54,13 +54,75 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Máscaras de convolución</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-para-afilar-en-video"></a><a href="#rendimiento-computacional-para-afilar-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional para afilar en video</h2>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Máscaras de convolución</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="mascara-para-afilar-en-imagenes"></a><a href="#mascara-para-afilar-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara para afilar en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_afilar">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>},
+                     { <span class="hljs-number">-1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">-1</span>},
+                     { <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>); 
+ <span class="hljs-comment">// image(img, 0, 0);</span>
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado"></a><a href="#resultado" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/afilar.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="mascara-para-afilar-en-video"></a><a href="#mascara-para-afilar-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara para afilar en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_afilar_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -71,10 +133,8 @@ PFont font, f;
 <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
-  frameRate(<span class="hljs-number">60</span>);
+  
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);  
@@ -115,21 +175,78 @@ PFont font, f;
       color Color = color(rtotal, gtotal, btotal);
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
-  }
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
+  }  
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado"></a><a href="#resultado" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/afilarFPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="-rendimiento-computacional-para-desenfocar-en-video"></a><a href="#-rendimiento-computacional-para-desenfocar-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>## Rendimiento computacional para desenfocar en video</h2>
+<h2><a class="anchor" aria-hidden="true" id="mascara-para-desenfocar-en-imagenes"></a><a href="#mascara-para-desenfocar-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara para desenfocar en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desenfoque">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>},
+                     { <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>},
+                     { <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>); 
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">9</span> * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">9</span> * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">9</span> * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado-1"></a><a href="#resultado-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/desenfocar.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="mascara-para-desenfocar-en-video"></a><a href="#mascara-para-desenfocar-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara para desenfocar en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desenfoque_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -140,10 +257,8 @@ PFont font, f;
 <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
-  frameRate(<span class="hljs-number">60</span>);
+  
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);  
@@ -184,21 +299,78 @@ PFont font, f;
       color Color = color(rtotal, gtotal, btotal);
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
-  }
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
+  }  
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-1"></a><a href="#resultado-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/desenfocarPFS" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-para-desenfoque-gaussiano-con-matriz-3x3-en-video"></a><a href="#rendimiento-computacional-para-desenfoque-gaussiano-con-matriz-3x3-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional para desenfoque Gaussiano con matriz 3x3 en video</h2>
+<h2><a class="anchor" aria-hidden="true" id="mascara-de-desenfoque-gaussiano-con-matriz-3x3-en-imagenes"></a><a href="#mascara-de-desenfoque-gaussiano-con-matriz-3x3-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara de desenfoque Gaussiano con matriz 3x3 en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desGauss3x3">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>},
+                     { <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>},
+                     { <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>); 
+ <span class="hljs-comment">// image(img, 0, 0);</span>
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">16</span> * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">16</span> * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">16</span> * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado-2"></a><a href="#resultado-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/desGauss3x3.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="mascara-de-desenfoque-gaussiano-con-matriz-3x3-en-video"></a><a href="#mascara-de-desenfoque-gaussiano-con-matriz-3x3-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara de desenfoque Gaussiano con matriz 3x3 en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desGauss3x3_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -210,8 +382,6 @@ PFont font, f;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);  
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);  
@@ -252,21 +422,79 @@ PFont font, f;
       color Color = color(rtotal, gtotal, btotal);
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
-  }
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
+  }  
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-2"></a><a href="#resultado-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/desGauss3x3FPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-desenfoque-gaussiano-con-matriz-5x5-en-video"></a><a href="#rendimiento-computacional-desenfoque-gaussiano-con-matriz-5x5-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional desenfoque Gaussiano con matriz 5x5 en video</h2>
+<h2><a class="anchor" aria-hidden="true" id="mascara-de-desenfoque-gaussiano-con-matriz-5x5-en-imagenes"></a><a href="#mascara-de-desenfoque-gaussiano-con-matriz-5x5-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara de desenfoque Gaussiano con matriz 5x5 en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desGauss5x5">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>},
+                     { <span class="hljs-number">4</span>, <span class="hljs-number">16</span>, <span class="hljs-number">24</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>},
+                     { <span class="hljs-number">6</span>, <span class="hljs-number">24</span>, <span class="hljs-number">36</span>, <span class="hljs-number">24</span>, <span class="hljs-number">6</span>},
+                     { <span class="hljs-number">4</span>, <span class="hljs-number">16</span>, <span class="hljs-number">24</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>},
+                     { <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>);
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">5</span>;
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">256</span> * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">256</span> * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * <span class="hljs-number">1</span>/<span class="hljs-number">256</span> * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado-3"></a><a href="#resultado-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/desGauss5x5.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="mascara-de-desenfoque-gaussiano-con-matriz-5x5-en-video"></a><a href="#mascara-de-desenfoque-gaussiano-con-matriz-5x5-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara de desenfoque Gaussiano con matriz 5x5 en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_desGauss5x5_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -280,8 +508,6 @@ PFont font, f;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);  
@@ -321,21 +547,78 @@ PFont font, f;
       color Color = color(rtotal, gtotal, btotal);
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
-  }
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
+  }  
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-3"></a><a href="#resultado-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/desGauss5x5FPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-primera-mascara-de-detección-de-bordes-en-video"></a><a href="#rendimiento-computacional-primera-mascara-de-detección-de-bordes-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional Primera mascara de detección de bordes en video</h2>
+<h2><a class="anchor" aria-hidden="true" id="primera-mascara-de-detección-de-bordes-en-imagenes"></a><a href="#primera-mascara-de-detección-de-bordes-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Primera mascara de detección de bordes en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes1">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>},
+                     { <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>},
+                     { <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>); 
+ <span class="hljs-comment">// image(img, 0, 0);</span>
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado-4"></a><a href="#resultado-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/detBordes1.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="primera-mascara-de-detección-de-bordes-en-video"></a><a href="#primera-mascara-de-detección-de-bordes-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Primera mascara de detección de bordes en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes1_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -349,8 +632,6 @@ PFont font, f;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);
@@ -391,20 +672,76 @@ PFont font, f;
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
   }  
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-4"></a><a href="#resultado-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/detBordes1FPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-segunda-mascara-de-detección-de-bordes-en-video"></a><a href="#rendimiento-computacional-segunda-mascara-de-detección-de-bordes-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional Segunda mascara de detección de bordes en video</h2>
+<h2><a class="anchor" aria-hidden="true" id="segunda-mascara-de-detección-de-bordes-en-imagenes"></a><a href="#segunda-mascara-de-detección-de-bordes-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Segunda mascara de detección de bordes en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes2">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>},
+                     { <span class="hljs-number">-1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">-1</span>},
+                     { <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>);
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado-5"></a><a href="#resultado-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/detBordes2.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="segunda-mascara-de-detección-de-bordes-en-video"></a><a href="#segunda-mascara-de-detección-de-bordes-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Segunda mascara de detección de bordes en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes2_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -416,8 +753,6 @@ PFont font, f;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);
@@ -458,20 +793,76 @@ PFont font, f;
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
   }  
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-5"></a><a href="#resultado-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/detBordes2FPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-tercera-mascara-de-detección-de-bordes-en-video"></a><a href="#rendimiento-computacional-tercera-mascara-de-detección-de-bordes-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional Tercera mascara de detección de bordes en video</h2>
+<h2><a class="anchor" aria-hidden="true" id="tercera-mascara-de-detección-de-bordes-en-imagenes"></a><a href="#tercera-mascara-de-detección-de-bordes-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tercera mascara de detección de bordes en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes3">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>},
+                     { <span class="hljs-number">-1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">-1</span>},
+                     { <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>);
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado-6"></a><a href="#resultado-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/detBordes3.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="tercera-mascara-de-detección-de-bordes-en-video"></a><a href="#tercera-mascara-de-detección-de-bordes-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tercera mascara de detección de bordes en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_det_bordes3_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -483,8 +874,6 @@ PFont font, f;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);
@@ -524,21 +913,76 @@ PFont font, f;
       color Color = color(rtotal, gtotal, btotal);
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
-  }
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
+  }  
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-6"></a><a href="#resultado-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/detBordes3FPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-mascara-identidad-en-video"></a><a href="#rendimiento-computacional-mascara-identidad-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional Mascara identidad en video</h2>
+<h2><a class="anchor" aria-hidden="true" id="mascara-identidad-en-imagenes"></a><a href="#mascara-identidad-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara identidad en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_identidad">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>},
+                     { <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>},
+                     { <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>); 
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">3</span>;  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado-7"></a><a href="#resultado-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/identidad.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="mascara-identidad-en-video"></a><a href="#mascara-identidad-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara identidad en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_identidad_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -552,8 +996,6 @@ PFont font, f;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);
@@ -594,20 +1036,78 @@ PFont font, f;
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
   }  
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-7"></a><a href="#resultado-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/identidadFPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-mascara-de-enfoque-con-matrix-5x5-en-video"></a><a href="#rendimiento-computacional-mascara-de-enfoque-con-matrix-5x5-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional Mascara de enfoque con matrix 5x5 en video</h2>
+<h2><a class="anchor" aria-hidden="true" id="mascara-de-enfoque-con-matrix-5x5-en-imagenes"></a><a href="#mascara-de-enfoque-con-matrix-5x5-en-imagenes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara de enfoque con matrix 5x5 en imagenes</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_Masc_Desenf5x5">código fuente</a></p>
+<pre><code class="hljs">PImage img;
+<span class="hljs-built_in">int</span> w = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// It's possible to convolve the image with many different </span>
+<span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
+<span class="hljs-comment">// filter; it accentuates the edges. </span>
+<span class="hljs-built_in">float</span>[][] matrix = { { <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>},
+                     { <span class="hljs-number">4</span>, <span class="hljs-number">16</span>, <span class="hljs-number">24</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>},
+                     { <span class="hljs-number">6</span>, <span class="hljs-number">24</span>, <span class="hljs-number">-476</span>, <span class="hljs-number">24</span>, <span class="hljs-number">6</span>},
+                     { <span class="hljs-number">4</span>, <span class="hljs-number">16</span>, <span class="hljs-number">24</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>},
+                     { <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>}}; 
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
+  img = loadImage(<span class="hljs-string">"imagen3.jpg"</span>); 
+  img.resize(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>);
+  image(img, width/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, width, height);
+  
+  <span class="hljs-built_in">int</span> matrixsize = <span class="hljs-number">5</span>;
+  
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x = width/<span class="hljs-number">2</span>; x &lt; width; x++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y = <span class="hljs-number">0</span>; y &lt; height; y++ ) {
+      color c = convolution(x, y, matrix, matrixsize, img);
+      <span class="hljs-keyword">set</span>(x, y, c);
+    }
+  }
+  image(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width/<span class="hljs-number">2</span>, height);
+}
+
+<span class="hljs-built_in">void</span> draw() {
+}
+
+color convolution(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y, <span class="hljs-built_in">float</span>[][] matrix, <span class="hljs-built_in">int</span> matrixsize, PImage img)
+{
+  <span class="hljs-built_in">float</span> rtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> gtotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">float</span> btotal = <span class="hljs-number">0.0</span>;
+  <span class="hljs-built_in">int</span> offset = matrixsize / <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; matrixsize; i++){
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j &lt; matrixsize; j++){
+      <span class="hljs-comment">// What pixel are we testing</span>
+      <span class="hljs-built_in">int</span> xloc = x+i-offset;
+      <span class="hljs-built_in">int</span> yloc = y+j-offset;
+      <span class="hljs-built_in">int</span> loc = xloc + img.width*yloc;
+      <span class="hljs-comment">// Make sure we haven't walked off our image, we could do better here</span>
+      loc = constrain(loc,<span class="hljs-number">0</span>,img.pixels.length<span class="hljs-number">-1</span>);
+      <span class="hljs-comment">// Calculate the convolution</span>
+      rtotal += (red(img.pixels[loc]) * <span class="hljs-number">-1</span>/<span class="hljs-number">256</span> * matrix[i][j]);
+      gtotal += (green(img.pixels[loc]) * <span class="hljs-number">-1</span>/<span class="hljs-number">256</span> * matrix[i][j]);
+      btotal += (blue(img.pixels[loc]) * <span class="hljs-number">-1</span>/<span class="hljs-number">256</span> * matrix[i][j]);
+    }
+  }
+  <span class="hljs-comment">// Make sure RGB is within range</span>
+  rtotal = constrain(rtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  gtotal = constrain(gtotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  btotal = constrain(btotal, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+  <span class="hljs-comment">// Return the resulting color</span>
+  <span class="hljs-keyword">return</span> color(rtotal, gtotal, btotal);
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="resultado-8"></a><a href="#resultado-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/enfoque.PNG" alt="alt-text"></p>
+<h2><a class="anchor" aria-hidden="true" id="mascara-de-enfoque-con-matrix-5x5-en-video"></a><a href="#mascara-de-enfoque-con-matrix-5x5-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mascara de enfoque con matrix 5x5 en video</h2>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Convolucion/Convolucion_Masc_Desenf5x5_video">código fuente</a></p>
 <pre><code class="hljs">PImage img;
 <span class="hljs-keyword">import</span> processing.video.*;
 Movie myMovie;  
-PFont font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
+
 <span class="hljs-comment">// It's possible to convolve the image with many different </span>
 <span class="hljs-comment">// matrices to produce different effects. This is a high-pass </span>
 <span class="hljs-comment">// filter; it accentuates the edges. </span>
@@ -621,8 +1121,6 @@ PFont font, f;
 <span class="hljs-built_in">void</span> setup() {
   size(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
   background(<span class="hljs-number">0</span>);
-  font = createFont(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = createFont(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-literal">true</span>);
   myMovie = new Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
   myMovie.loop();
   myMovie.volume(<span class="hljs-number">0</span>);
@@ -663,162 +1161,8 @@ PFont font, f;
       <span class="hljs-keyword">set</span>(x, y, Color);
     }
   }  
-  textFont(f,<span class="hljs-number">18</span>);
-  fill(<span class="hljs-number">255</span>);
-  text(<span class="hljs-string">"FPS: "</span> + nf(frameRate, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-8"></a><a href="#resultado-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/enfoqueFPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-greyscale-en-video"></a><a href="#rendimiento-computacional-greyscale-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional greyScale en video</h2>
-<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/greyScaleVideo">código fuente</a></p>
-<pre><code class="hljs"><span class="hljs-keyword">PImage</span> img;
-<span class="hljs-keyword">import</span> processing.video.*;
-Movie myMovie;
-<span class="hljs-keyword">PFont</span> font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
-<span class="hljs-keyword">void</span> <span class="hljs-title">setup</span>() {
-  <span class="hljs-built_in">size</span>(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
-  <span class="hljs-comment">//img = loadImage("imagen.jpg");</span>
-  <span class="hljs-comment">//image(img, width/2, 0, width/2, height);</span>
-  <span class="hljs-built_in">background</span>(<span class="hljs-number">0</span>);
-  font = <span class="hljs-built_in">createFont</span>(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = <span class="hljs-built_in">createFont</span>(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-keyword">true</span>);
-  myMovie = <span class="hljs-keyword">new</span> Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
-  myMovie.<span class="hljs-built_in">loop</span>();
-  myMovie.volume(<span class="hljs-number">0</span>);
-  
-  <span class="hljs-comment">//image(img, 0, 0, width/2, height);</span>
-}
-
-<span class="hljs-keyword">void</span> movieEvent(Movie m) {
-  m.read();
-}
-
-<span class="hljs-keyword">void</span> <span class="hljs-title">draw</span>() {
-  <span class="hljs-built_in">image</span>(myMovie, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">width</span>, <span class="hljs-built_in">height</span>);
-  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x=<span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>; x&lt;<span class="hljs-built_in">width</span>; x++)
-  {
-    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y=<span class="hljs-number">0</span>; y&lt;<span class="hljs-built_in">height</span>; y++)
-    {
-      <span class="hljs-built_in">color</span> c = <span class="hljs-built_in">get</span>(x, y);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">red</span> = <span class="hljs-built_in">red</span>(c);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">green</span> = <span class="hljs-built_in">green</span>(c);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">blue</span> = <span class="hljs-built_in">blue</span>(c);
-      <span class="hljs-built_in">int</span> average = (<span class="hljs-built_in">int</span>)(<span class="hljs-built_in">red</span>+<span class="hljs-built_in">green</span>+<span class="hljs-built_in">blue</span>)/<span class="hljs-number">3</span>;
-      <span class="hljs-built_in">color</span> Color = <span class="hljs-built_in">color</span>(average, average, average);
-      <span class="hljs-built_in">set</span>(x, y, Color);
-    }
-  }
-  <span class="hljs-built_in">textFont</span>(f,<span class="hljs-number">18</span>);
-  <span class="hljs-built_in">fill</span>(<span class="hljs-number">255</span>);
-  <span class="hljs-built_in">text</span>(<span class="hljs-string">"FPS: "</span> + <span class="hljs-built_in">nf</span>(<span class="hljs-built_in">frameRate</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
-  
-}
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-9"></a><a href="#resultado-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/greyScaleFPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-greyshades-en-video"></a><a href="#rendimiento-computacional-greyshades-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional greyShades en video</h2>
-<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/greyShadesVideo">código fuente</a></p>
-<pre><code class="hljs"><span class="hljs-keyword">PImage</span> img;
-<span class="hljs-keyword">import</span> processing.video.*;
-Movie myMovie;
-<span class="hljs-keyword">PFont</span> font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
-
-<span class="hljs-keyword">void</span> <span class="hljs-title">setup</span>() {
-  <span class="hljs-built_in">size</span>(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
-  <span class="hljs-comment">//img = loadImage("imagen.jpg");</span>
-  <span class="hljs-comment">//image(img, width/2, 0, width/2, height);</span>
-  <span class="hljs-built_in">background</span>(<span class="hljs-number">0</span>);
-  font = <span class="hljs-built_in">createFont</span>(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = <span class="hljs-built_in">createFont</span>(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-keyword">true</span>);
-  myMovie = <span class="hljs-keyword">new</span> Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
-  myMovie.<span class="hljs-built_in">loop</span>();
-  myMovie.volume(<span class="hljs-number">0</span>);
-
-}
-
-<span class="hljs-keyword">void</span> movieEvent(Movie m) {
-  m.read();
-}
-
-<span class="hljs-keyword">void</span> <span class="hljs-title">draw</span>() {
-  <span class="hljs-comment">//las 2 al tiempo</span>
-  <span class="hljs-built_in">image</span>(myMovie, <span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-built_in">height</span>);
-  <span class="hljs-built_in">image</span>(myMovie, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-built_in">height</span>);
-  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x=<span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>; x&lt;<span class="hljs-built_in">width</span>; x++)
-  {
-    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y=<span class="hljs-number">0</span>; y&lt;<span class="hljs-built_in">height</span>; y++)
-    {
-      <span class="hljs-built_in">color</span> c = <span class="hljs-built_in">get</span>(x, y);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">red</span> = <span class="hljs-built_in">red</span>(c);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">green</span> = <span class="hljs-built_in">green</span>(c);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">blue</span> = <span class="hljs-built_in">blue</span>(c);
-      <span class="hljs-built_in">int</span> shadesNumber = <span class="hljs-number">3</span>; <span class="hljs-comment">//NumberOfShades is a value between 2 and 256</span>
-      <span class="hljs-built_in">float</span> conversionFactor = <span class="hljs-number">255</span> / (shadesNumber <span class="hljs-number">-1</span>);
-      <span class="hljs-built_in">float</span> average = (<span class="hljs-built_in">red</span>+<span class="hljs-built_in">green</span>+<span class="hljs-built_in">blue</span>) /<span class="hljs-number">3</span>;
-      <span class="hljs-built_in">float</span> grey = <span class="hljs-built_in">int</span>(average/conversionFactor) * conversionFactor;
-      <span class="hljs-built_in">color</span> Color = <span class="hljs-built_in">color</span>(grey, grey, grey);
-      <span class="hljs-built_in">set</span>(x, y, Color);
-    }
-  }
-  <span class="hljs-built_in">textFont</span>(f,<span class="hljs-number">18</span>);
-  <span class="hljs-built_in">fill</span>(<span class="hljs-number">255</span>);
-  <span class="hljs-built_in">text</span>(<span class="hljs-string">"FPS: "</span> + <span class="hljs-built_in">nf</span>(<span class="hljs-built_in">frameRate</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
-}
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-10"></a><a href="#resultado-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/greyShadesFPS.PNG" alt="alt-text"></p>
-<h2><a class="anchor" aria-hidden="true" id="rendimiento-computacional-luma-en-video"></a><a href="#rendimiento-computacional-luma-en-video" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rendimiento computacional Luma en video</h2>
-<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/lumaVideo">código fuente</a></p>
-<pre><code class="hljs"><span class="hljs-keyword">PImage</span> img;
-<span class="hljs-keyword">import</span> processing.video.*;
-Movie myMovie;
-
-<span class="hljs-keyword">PFont</span> font, f;
-<span class="hljs-built_in">int</span> resolution = <span class="hljs-number">5</span>;
-<span class="hljs-keyword">void</span> <span class="hljs-title">setup</span>() {
-  <span class="hljs-built_in">size</span>(<span class="hljs-number">1200</span>, <span class="hljs-number">600</span>);
-  <span class="hljs-comment">//img = loadImage("imagen.jpg");</span>
-  <span class="hljs-comment">//image(img, width/2, 0, width/2, height);</span>
-  <span class="hljs-built_in">background</span>(<span class="hljs-number">0</span>);
-  font = <span class="hljs-built_in">createFont</span>(<span class="hljs-string">"Courier"</span>, resolution + <span class="hljs-number">3</span>);
-  f = <span class="hljs-built_in">createFont</span>(<span class="hljs-string">"Arial"</span>,<span class="hljs-number">16</span>,<span class="hljs-keyword">true</span>);
-  myMovie = <span class="hljs-keyword">new</span> Movie(<span class="hljs-keyword">this</span>, <span class="hljs-string">"video.mp4"</span>);
-  myMovie.<span class="hljs-built_in">loop</span>();
-  myMovie.volume(<span class="hljs-number">0</span>);
-
-}
-
-<span class="hljs-keyword">void</span> movieEvent(Movie m) {
-  m.read();
-}
-
-<span class="hljs-keyword">void</span> <span class="hljs-title">draw</span>() {
-  <span class="hljs-comment">//las 2 al tiempo</span>
-  <span class="hljs-built_in">image</span>(myMovie, <span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-built_in">height</span>);
-  <span class="hljs-built_in">image</span>(myMovie, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-built_in">height</span>);
-  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> x=<span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>; x&lt;<span class="hljs-built_in">width</span>; x++)
-  {
-    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> y=<span class="hljs-number">0</span>; y&lt;<span class="hljs-built_in">height</span>; y++)
-    {
-      <span class="hljs-built_in">color</span> c = <span class="hljs-built_in">get</span>(x, y);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">red</span> = <span class="hljs-built_in">red</span>(c);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">green</span> = <span class="hljs-built_in">green</span>(c);
-      <span class="hljs-built_in">float</span> <span class="hljs-built_in">blue</span> = <span class="hljs-built_in">blue</span>(c);
-      <span class="hljs-built_in">float</span> grey = <span class="hljs-built_in">red</span>*<span class="hljs-number">0.299</span> + <span class="hljs-built_in">green</span>*<span class="hljs-number">0.587</span> + <span class="hljs-built_in">blue</span>*<span class="hljs-number">0.114</span>;
-      <span class="hljs-built_in">color</span> Color = <span class="hljs-built_in">color</span>(grey, grey, grey);
-      <span class="hljs-built_in">set</span>(x, y, Color);
-    }
-  }
-  <span class="hljs-built_in">textFont</span>(f,<span class="hljs-number">18</span>);
-  <span class="hljs-built_in">fill</span>(<span class="hljs-number">255</span>);
-  <span class="hljs-built_in">text</span>(<span class="hljs-string">"FPS: "</span> + <span class="hljs-built_in">nf</span>(<span class="hljs-built_in">frameRate</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">1100</span>, <span class="hljs-number">20</span>);
-}
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="resultado-11"></a><a href="#resultado-11" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/lumaFPS.PNG" alt="alt-text"></p>
-<p>This is a link to <a href="/docs/doc2">another document.</a>  <br>
+<p>This is a link to <a href="/docs/doc3">another document.</a>  <br>
 This is a link to an <a href="http://www.example.com">external page.</a></p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc1"><span class="arrow-prev">← </span><span>Conversión a escala de grises</span></a><a class="docs-next button" href="/docs/doc3"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#rendimiento-computacional-para-afilar-en-video">Rendimiento computacional para afilar en video</a><ul class="toc-headings"><li><a href="#resultado">Resultado:</a></li></ul></li><li><a href="#-rendimiento-computacional-para-desenfocar-en-video">## Rendimiento computacional para desenfocar en video</a><ul class="toc-headings"><li><a href="#resultado-1">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-para-desenfoque-gaussiano-con-matriz-3x3-en-video">Rendimiento computacional para desenfoque Gaussiano con matriz 3x3 en video</a><ul class="toc-headings"><li><a href="#resultado-2">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-desenfoque-gaussiano-con-matriz-5x5-en-video">Rendimiento computacional desenfoque Gaussiano con matriz 5x5 en video</a><ul class="toc-headings"><li><a href="#resultado-3">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-primera-mascara-de-detección-de-bordes-en-video">Rendimiento computacional Primera mascara de detección de bordes en video</a><ul class="toc-headings"><li><a href="#resultado-4">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-segunda-mascara-de-detección-de-bordes-en-video">Rendimiento computacional Segunda mascara de detección de bordes en video</a><ul class="toc-headings"><li><a href="#resultado-5">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-tercera-mascara-de-detección-de-bordes-en-video">Rendimiento computacional Tercera mascara de detección de bordes en video</a><ul class="toc-headings"><li><a href="#resultado-6">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-mascara-identidad-en-video">Rendimiento computacional Mascara identidad en video</a><ul class="toc-headings"><li><a href="#resultado-7">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-mascara-de-enfoque-con-matrix-5x5-en-video">Rendimiento computacional Mascara de enfoque con matrix 5x5 en video</a><ul class="toc-headings"><li><a href="#resultado-8">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-greyscale-en-video">Rendimiento computacional greyScale en video</a><ul class="toc-headings"><li><a href="#resultado-9">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-greyshades-en-video">Rendimiento computacional greyShades en video</a><ul class="toc-headings"><li><a href="#resultado-10">Resultado:</a></li></ul></li><li><a href="#rendimiento-computacional-luma-en-video">Rendimiento computacional Luma en video</a><ul class="toc-headings"><li><a href="#resultado-11">Resultado:</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc1"><span class="arrow-prev">← </span><span>Conversión a escala de grises</span></a><a class="docs-next button" href="/docs/doc3"><span>Rendimiento computacional</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#mascara-para-afilar-en-imagenes">Mascara para afilar en imagenes</a><ul class="toc-headings"><li><a href="#resultado">Resultado:</a></li></ul></li><li><a href="#mascara-para-afilar-en-video">Mascara para afilar en video</a></li><li><a href="#mascara-para-desenfocar-en-imagenes">Mascara para desenfocar en imagenes</a><ul class="toc-headings"><li><a href="#resultado-1">Resultado:</a></li></ul></li><li><a href="#mascara-para-desenfocar-en-video">Mascara para desenfocar en video</a></li><li><a href="#mascara-de-desenfoque-gaussiano-con-matriz-3x3-en-imagenes">Mascara de desenfoque Gaussiano con matriz 3x3 en imagenes</a><ul class="toc-headings"><li><a href="#resultado-2">Resultado:</a></li></ul></li><li><a href="#mascara-de-desenfoque-gaussiano-con-matriz-3x3-en-video">Mascara de desenfoque Gaussiano con matriz 3x3 en video</a></li><li><a href="#mascara-de-desenfoque-gaussiano-con-matriz-5x5-en-imagenes">Mascara de desenfoque Gaussiano con matriz 5x5 en imagenes</a><ul class="toc-headings"><li><a href="#resultado-3">Resultado:</a></li></ul></li><li><a href="#mascara-de-desenfoque-gaussiano-con-matriz-5x5-en-video">Mascara de desenfoque Gaussiano con matriz 5x5 en video</a></li><li><a href="#primera-mascara-de-detección-de-bordes-en-imagenes">Primera mascara de detección de bordes en imagenes</a><ul class="toc-headings"><li><a href="#resultado-4">Resultado:</a></li></ul></li><li><a href="#primera-mascara-de-detección-de-bordes-en-video">Primera mascara de detección de bordes en video</a></li><li><a href="#segunda-mascara-de-detección-de-bordes-en-imagenes">Segunda mascara de detección de bordes en imagenes</a><ul class="toc-headings"><li><a href="#resultado-5">Resultado:</a></li></ul></li><li><a href="#segunda-mascara-de-detección-de-bordes-en-video">Segunda mascara de detección de bordes en video</a></li><li><a href="#tercera-mascara-de-detección-de-bordes-en-imagenes">Tercera mascara de detección de bordes en imagenes</a><ul class="toc-headings"><li><a href="#resultado-6">Resultado:</a></li></ul></li><li><a href="#tercera-mascara-de-detección-de-bordes-en-video">Tercera mascara de detección de bordes en video</a></li><li><a href="#mascara-identidad-en-imagenes">Mascara identidad en imagenes</a><ul class="toc-headings"><li><a href="#resultado-7">Resultado:</a></li></ul></li><li><a href="#mascara-identidad-en-video">Mascara identidad en video</a></li><li><a href="#mascara-de-enfoque-con-matrix-5x5-en-imagenes">Mascara de enfoque con matrix 5x5 en imagenes</a><ul class="toc-headings"><li><a href="#resultado-8">Resultado:</a></li></ul></li><li><a href="#mascara-de-enfoque-con-matrix-5x5-en-video">Mascara de enfoque con matrix 5x5 en video</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
