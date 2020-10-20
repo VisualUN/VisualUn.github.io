@@ -62,6 +62,10 @@ void draw() {
 
 }
 ```
+## Ilusión
+El usuario percibe que la barra tiene distintos tonos de gris cuando no es así. Esta ilusión se produce por el gradiente de color
+que hay en el fondo. Este fenómeno tiene relación con el efecto Bezold, el cual sugiere que un color puede ser apreciado de manera diferente dependiendo de su relación con los colores adyacentes.
+
 ## Interactividad
 El usuario puede hacer click, de manera que se elimina el gradiente del fondo quedando este completamente blanco. Esto
 le permite al usuario apreciar que la franja gris no tiene variaciones, sino que es completamente del mismo color.
@@ -74,4 +78,17 @@ le permite al usuario apreciar que la franja gris no tiene variaciones, sino que
 
 
 ### Referencias
-https://processing.org/examples/lineargradient.html
+- https://processing.org/examples/lineargradient.html
+- https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect/
+
+
+
+
+### Discusión
+## 1 Complete la tabla
+| Ilusión     | Categoria   | Referencia     | Tipo de interactividad (si aplica)   | URL código base |
+| ----------- | ----------- | -----------    | ------------------------------------ | ----------------------------                   |
+| 1           | Percepción de color | https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect| Click del mouse | https://processing.org/examples/lineargradient.html
+| Paragraph   | Text        |
+
+## 2 Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar
