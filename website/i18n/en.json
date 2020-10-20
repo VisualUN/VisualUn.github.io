@@ -21,6 +21,10 @@
         "title": "Histograma de una imagen",
         "sidebar_label": "Histograma de una imagen"
       },
+      "doc8": {
+        "title": "Ilusiones visuales",
+        "sidebar_label": "Taller de Ilusiones visuales"
+      },
       "doc4": {
         "title": "Other Document"
       },
@@ -29,14 +33,15 @@
       }
     },
     "links": {
-      "Implementaciones": "Implementaciones",
+      "Análisis de imágenes por software": "Análisis de imágenes por software",
+      "Ilusiones": "Ilusiones",
       "API": "API",
       "Help": "Help",
       "Blog": "Blog"
     },
     "categories": {
-      "Implementaciones": "Implementaciones",
-      "Second Category": "Second Category",
+      "Analisis de imagenes por software": "Analisis de imagenes por software",
+      "Ilusiones visuales": "Ilusiones visuales",
       "First Category": "First Category"
     }
   },

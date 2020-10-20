@@ -1,7 +1,7 @@
 {
     "docs": {
-        "Implementaciones": ["doc1", "doc2", "doc3"],
-        "Second Category": [""]
+        "Analisis de imagenes por software": ["doc1", "doc2", "doc3","doc7"],
+        "Ilusiones visuales": ["doc8"]
     },
     "docs-other": {
         "First Category": ["doc4", "doc5"]
