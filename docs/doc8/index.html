@@ -106,9 +106,6 @@ void mouse<span class="hljs-constructor">Clicked()</span> {
 
 }
 
-void draw<span class="hljs-literal">()</span> {
-
-}
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="ilusión"></a><a href="#ilusión" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilusión</h2>
 <p>El usuario percibe que la barra tiene distintos tonos de gris cuando no es así. Esta ilusión se produce por el gradiente de color
@@ -125,6 +122,84 @@ le permite al usuario apreciar que la franja gris no tiene variaciones, sino que
 <li><a href="https://processing.org/examples/lineargradient.html">https://processing.org/examples/lineargradient.html</a></li>
 <li><a href="https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect/">https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect/</a></li>
 </ul>
+<h2><a class="anchor" aria-hidden="true" id="ilusión-2-triángulo-de-penrose"></a><a href="#ilusión-2-triángulo-de-penrose" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilusión 2: Triángulo de Penrose</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/blob/master/penrose.js">código fuente</a></p>
+<pre><code class="hljs">var anglex = <span class="hljs-number">42</span>
+var angley = <span class="hljs-number">-36.65</span>
+var anglez = <span class="hljs-number">0</span>
+function setup() {
+  createCanvas(<span class="hljs-number">500</span>, <span class="hljs-number">400</span>, WEBGL);
+  angleMode(DEGREES);
+  currCamera = createCamera();
+  currCamera.ortho();
+}
+
+function mouseClicked() {
+
+}
+
+function draw() {
+
+  orbitControl();
+  background(<span class="hljs-number">215</span>);
+  normalMaterial();
+  ambientLight(<span class="hljs-string">"#FF7F15"</span>);
+  specularMaterial(<span class="hljs-number">220</span>);
+
+  let locX = height / <span class="hljs-number">2</span>;
+  let locY = width / <span class="hljs-number">2</span>;
+  pointLight(<span class="hljs-number">220</span>, <span class="hljs-number">220</span>, <span class="hljs-number">220</span>, locX, locY, <span class="hljs-number">150</span>);
+  <span class="hljs-comment">//emissiveMaterial("#FF7F15");</span>
+  normalMaterial();
+  const numblocks = <span class="hljs-number">7</span>;
+
+  <span class="hljs-comment">//rotate(angle);</span>
+  rotateY(angley);
+  rotateX(anglex);
+  rotateZ(anglez);
+  <span class="hljs-comment">//angle++;</span>
+  <span class="hljs-comment">//console.log(angle)</span>
+  rectMode(CENTER);
+
+  for (let z = <span class="hljs-number">0</span>; z &lt;= numblocks; z++) {
+       translate(<span class="hljs-number">20</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+       push();
+       box(<span class="hljs-number">15</span>, <span class="hljs-number">15</span>, <span class="hljs-number">15</span>);
+       pop();
+
+  }
+
+  for (let y = <span class="hljs-number">0</span>; y &lt; numblocks; y++) {
+       translate(<span class="hljs-number">0</span>, <span class="hljs-number">20</span>, <span class="hljs-number">0</span>);
+       push();
+       box(<span class="hljs-number">15</span>, <span class="hljs-number">15</span>, <span class="hljs-number">15</span>);
+       pop();
+
+  }
+
+  for (let x = <span class="hljs-number">0</span>; x &lt; numblocks; x++) {
+       translate(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">20</span>);
+       push();
+       box(<span class="hljs-number">15</span>, <span class="hljs-number">15</span>, <span class="hljs-number">15</span>);
+       pop();
+
+  }
+
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="ilusión-1"></a><a href="#ilusión-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilusión</h2>
+<p>El usuario percibe que se forma un triángulo, sin embargo esta figura es un objeto que no puede ser construido en un espacio tridimensional. La ilusión consiste en
+observar una disposición de una serie de cubos que desde el ángulo apropiado parecen formar un Triángulo de Penrose.</p>
+<h2><a class="anchor" aria-hidden="true" id="interactividad-1"></a><a href="#interactividad-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interactividad</h2>
+<p>El usuario puede girar la figura en 3D usando el mouse para darse cuenta que el Triángulo se forma gracias a un efecto de perspectiva
+cuando el ángulo es el apropiado.</p>
+<h3><a class="anchor" aria-hidden="true" id="resultado-1"></a><a href="#resultado-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/triangulo.gif" alt="alt-text"></p>
+<h3><a class="anchor" aria-hidden="true" id="referencias-1"></a><a href="#referencias-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referencias</h3>
+<ul>
+<li><a href="https://p5js.org/es/reference/">https://p5js.org/es/reference/</a></li>
+<li><a href="https://www.yeggi.com/q/penrose/3/">https://www.yeggi.com/q/penrose/3/</a></li>
+</ul>
 <h3><a class="anchor" aria-hidden="true" id="discusión"></a><a href="#discusión" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Discusión</h3>
 <h2><a class="anchor" aria-hidden="true" id="1-complete-la-tabla"></a><a href="#1-complete-la-tabla" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1 Complete la tabla</h2>
 <table>
@@ -132,9 +207,10 @@ le permite al usuario apreciar que la franja gris no tiene variaciones, sino que
 <tr><th>Ilusión</th><th>Categoria</th><th>Referencia</th><th>Tipo de interactividad (si aplica)</th><th>URL código base</th></tr>
 </thead>
 <tbody>
-<tr><td>1</td><td>Percepción de color</td><td><a href="https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect">https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect</a></td><td>Click del mouse</td><td><a href="https://processing.org/examples/lineargradient.html">https://processing.org/examples/lineargradient.html</a></td></tr>
-<tr><td>Paragraph</td><td>Text</td></tr>
+<tr><td>Gradiente gris</td><td>Percepción de color</td><td><a href="https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect">https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect</a></td><td>Click del mouse</td><td><a href="https://processing.org/examples/lineargradient.html">https://processing.org/examples/lineargradient.html</a></td></tr>
+<tr><td>Triángulo de Penrose</td><td>Perspectiva geométrica</td><td><a href="https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose">https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose</a></td><td>Girar la figura en 3D</td></tr>
+<tr><td>Paragraph</td><td>Text</td><td>text</td><td>text</td><td>text</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="2-describa-brevememente-las-referencias-estudiadas-y-los-posibles-temas-en-los-que-le-gustaría-profundizar"></a><a href="#2-describa-brevememente-las-referencias-estudiadas-y-los-posibles-temas-en-los-que-le-gustaría-profundizar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2 Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar</h2>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc7"><span class="arrow-prev">← </span><span>Histograma de una imagen</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ilusión-1-percepción-de-color">Ilusión 1: Percepción de color</a></li><li><a href="#ilusión">Ilusión</a></li><li><a href="#interactividad">Interactividad</a><ul class="toc-headings"><li><a href="#resultado">Resultado:</a></li><li><a href="#interactividad-al-hacer-click">Interactividad al hacer click</a></li><li><a href="#referencias">Referencias</a></li><li><a href="#discusión">Discusión</a></li></ul></li><li><a href="#1-complete-la-tabla">1 Complete la tabla</a></li><li><a href="#2-describa-brevememente-las-referencias-estudiadas-y-los-posibles-temas-en-los-que-le-gustaría-profundizar">2 Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc7"><span class="arrow-prev">← </span><span>Histograma de una imagen</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ilusión-1-percepción-de-color">Ilusión 1: Percepción de color</a></li><li><a href="#ilusión">Ilusión</a></li><li><a href="#interactividad">Interactividad</a><ul class="toc-headings"><li><a href="#resultado">Resultado:</a></li><li><a href="#interactividad-al-hacer-click">Interactividad al hacer click</a></li><li><a href="#referencias">Referencias</a></li></ul></li><li><a href="#ilusión-2-triángulo-de-penrose">Ilusión 2: Triángulo de Penrose</a></li><li><a href="#ilusión-1">Ilusión</a></li><li><a href="#interactividad-1">Interactividad</a><ul class="toc-headings"><li><a href="#resultado-1">Resultado:</a></li><li><a href="#referencias-1">Referencias</a></li><li><a href="#discusión">Discusión</a></li></ul></li><li><a href="#1-complete-la-tabla">1 Complete la tabla</a></li><li><a href="#2-describa-brevememente-las-referencias-estudiadas-y-los-posibles-temas-en-los-que-le-gustaría-profundizar">2 Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
