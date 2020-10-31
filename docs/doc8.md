@@ -161,12 +161,75 @@ cuando el ángulo es el apropiado.
 - https://p5js.org/es/reference/
 - https://www.yeggi.com/q/penrose/3/
 
+## Ilusión 3: Cuadrícula de Hermann
+
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/gridIlusion)
+### Código Processing
+```
+PShader grid;
+
+void setup() {
+  size(600, 600, P3D);
+  grid = loadShader("grid.glsl");
+  //grid.set("resolution", width, height);
+}
+
+void draw() {
+   filter(grid);
+   ellipseMode(RADIUS);  // Set ellipseMode to RADIUS
+   fill(255);  // Set fill to white
+   ellipse(width/2, height/2, 15 , 15);  // Draw white ellipse using RADIUS mode
+
+}
+```
+### Fragment Shader
+```
+precision mediump float;
+
+uniform float vpw = 600; // Width, in pixels
+uniform float vph = 600; // Height, in pixels
+
+uniform vec2 offset =  vec2(-1,1);
+uniform vec2 pitch = vec2(100,100);
+
+void main() {
+  float lX = gl_FragCoord.x / vpw;
+  float lY = gl_FragCoord.y / vph;
+
+  float scaleFactor = 60000000.0;
+
+  float offX = (scaleFactor * offset[0]) + gl_FragCoord.x;
+  float offY = (scaleFactor * offset[1]) + (1.0 - gl_FragCoord.y);
+
+  if (int(mod(offX, pitch[0])) < 12 || int(mod(offY, pitch[1])) < 12) {
+    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.5);
+  } else {
+    gl_FragColor = vec4(0, 0, 0, 1.0);
+  }
+}
+
+```
+
+## Ilusión
+Cuando el usuario mira la cuadrícula blanca sobre el fondo negro, se tiene la impresión de que surgen manchas o circulos grises en las intersecciones de las líneas. Sin embargo, estos circulos desaparecen cuando se observa directamente la intersección. Esta ilusión fue observada por primera vez por Ludimar Hermann en 1870. Esta ilusión se desarrolló utilizando un fragment shader.
+
+### Resultado:
+![alt-text](assets/grid.png)
+
+### Referencias
+- https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula
+- https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader
+
+
+
+
 ### Discusión
 ## 1 Complete la tabla
 | Ilusión     | Categoria   | Referencia     | Tipo de interactividad (si aplica)   | URL código base |
 | ----------- | ----------- | -----------    | ------------------------------------ | ----------------------------                   |
 | Gradiente gris | Percepción de color | https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect| Click del mouse | https://processing.org/examples/lineargradient.html
-| Triángulo de Penrose | Perspectiva geométrica| https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose | Girar la figura en 3D |
+| Triángulo de Penrose | Perspectiva geométrica| https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose | Girar la figura en 3D | n/a
+| Cuadrícula de Hermann   | Simultaneous Lightness Contrast (SLC) | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula | n/a | https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader |
 | Paragraph   | Text        | text | text | text |
 
 
