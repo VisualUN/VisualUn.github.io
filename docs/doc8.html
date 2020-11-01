@@ -254,49 +254,103 @@ cuando el ángulo es el apropiado.</p>
 <li><a href="https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula">https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula</a></li>
 <li><a href="https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader">https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader</a></li>
 </ul>
-<h2><a class="anchor" aria-hidden="true" id="ilusión-4-moiré-patterns"></a><a href="#ilusión-4-moiré-patterns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilusión 4: Moiré Patterns</h2>
-<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/moire">código fuente</a></p>
-<h3><a class="anchor" aria-hidden="true" id="código-processing-1"></a><a href="#código-processing-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Código Processing</h3>
-<pre><code class="hljs"><span class="hljs-keyword">PImage</span> img, grid;
-<span class="hljs-comment">/*
-*this visual ilusion works with the concept of Moire patterns, this is based on
-*interference between images where the ilusion of a moving image is done 
-*thanks to a see-through grid and an image with patterns that align with the 
-*empty spaces in the aforementioned grid
-*
-*To change to another image just change the name that is assigned
-*to the variable "img", the following images are available: dinosaurio, minecraft, 
-superman, ball, tunnel and technology
-*if you wish to add your own images you must make sure that the size of the image
-is the same as the grid, otherwise it wont work.
-*
-*original images by illusion channel brusspup
-*https://www.youtube.com/watch?v=UW5bcsax78I
-*/</span>
+<h2><a class="anchor" aria-hidden="true" id="ilusión-interactividad-con-click"></a><a href="#ilusión-interactividad-con-click" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilusión: Interactividad con click</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/IlusionClickInteractiva">código fuente</a></p>
+<pre><code class="hljs"><span class="hljs-built_in">int</span> counter;
+<span class="hljs-built_in">int</span> canvasHeight = <span class="hljs-number">174</span>;
+<span class="hljs-built_in">int</span> canvasWidth = <span class="hljs-number">484</span>;
+<span class="hljs-built_in">int</span> stripWidth = <span class="hljs-number">11</span>;
+<span class="hljs-built_in">int</span> blockWidth = <span class="hljs-number">44</span>;
+<span class="hljs-built_in">int</span> blockHeight = <span class="hljs-number">20</span>;
+<span class="hljs-built_in">int</span> yYellow = <span class="hljs-number">40</span>;
+<span class="hljs-built_in">int</span> yBlue = <span class="hljs-number">130</span>;
 
-<span class="hljs-keyword">void</span> <span class="hljs-title">setup</span>()
-{
-  <span class="hljs-built_in">size</span>(<span class="hljs-number">700</span>,<span class="hljs-number">600</span>);    
-  img = <span class="hljs-built_in">loadImage</span>(<span class="hljs-string">"dinosaurio.PNG"</span>); 
-  grid = <span class="hljs-built_in">loadImage</span>(<span class="hljs-string">"grilla.png"</span>);
+<span class="hljs-built_in">void</span> setup() {  <span class="hljs-comment">//setup function called initially, only once</span>
+  size(<span class="hljs-number">600</span>, <span class="hljs-number">174</span>);
+  counter = <span class="hljs-number">0</span>;
 }
 
-<span class="hljs-keyword">void</span> <span class="hljs-title">draw</span>()
-{
-  <span class="hljs-built_in">imageMode</span>(CENTER);
-  <span class="hljs-built_in">background</span>(<span class="hljs-number">255</span>);
-  <span class="hljs-built_in">image</span>(img, <span class="hljs-number">350</span>, <span class="hljs-number">300</span>);
-  <span class="hljs-built_in">image</span>(grid, <span class="hljs-built_in">mouseX</span>, <span class="hljs-number">300</span>);  
+<span class="hljs-built_in">void</span> draw() {  <span class="hljs-comment">//draw function loops </span>
+  background(<span class="hljs-number">255</span>);  <span class="hljs-comment">//set background white</span>
+  <span class="hljs-keyword">if</span>(mousePressed == <span class="hljs-literal">false</span>) { <span class="hljs-comment">// make black stripes</span>
+    fill(<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">600</span>; i = i+<span class="hljs-number">2</span>*stripWidth) {
+      rect(i, <span class="hljs-number">0</span>, stripWidth, canvasHeight);
+    }
+  }
+  counter++;
+  noStroke();
+  <span class="hljs-comment">// draw yellow rectangle</span>
+  fill(<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">0</span>);
+  rect(counter, yYellow, blockWidth, blockHeight);
+  <span class="hljs-comment">// draw yellow rectangle</span>
+  fill(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>);
+  rect(counter, yBlue, blockWidth, blockHeight);
+  <span class="hljs-comment">// after leaving the canvas restart at left</span>
+  <span class="hljs-keyword">if</span> (counter == canvasWidth) {
+    counter = <span class="hljs-number">0</span>;
+  }
 }
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="ilusión-3"></a><a href="#ilusión-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilusión</h2>
-<p>Cuando el usuario mueve el mouse en el eje horizontal, va moviendo la grilla que esta encima de una imagen estatica, al hacer esto da la ilusion de movimiento, en este caso la de un dinosaurio caminando; esto se produce dado que los espacios vacios en la grilla se alinean con las lineas de la imagen estatica, las imagenes deben tener el mismo tamaño o el efecto no se podra ver.</p>
+<p>El usuario percibe dos objetos que avanzan a la par, sin embargo con cada linea negra se observa una especie de &quot;frenado&quot;, al hacer click las lineas desaparecen y los dos objetos avanzan constantemente.</p>
+<h2><a class="anchor" aria-hidden="true" id="interactividad-2"></a><a href="#interactividad-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interactividad</h2>
+<p>El usuario puede hacer click para desaparecer las lineas negras verticales y asi conseguir un movimiento constante en los dos objetos.</p>
 <h3><a class="anchor" aria-hidden="true" id="resultado-3"></a><a href="#resultado-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
-<p><img src="/docs/assets/dinosaurio.gif" alt="alt-text"></p>
+<p><img src="/docs/assets/click.gif" alt="alt-text"></p>
 <h3><a class="anchor" aria-hidden="true" id="referencias-3"></a><a href="#referencias-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referencias</h3>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Moir%C3%A9_pattern">https://en.wikipedia.org/wiki/Moir%C3%A9_pattern</a></li>
-<li><a href="https://www.youtube.com/watch?v=UW5bcsax78I">https://www.youtube.com/watch?v=UW5bcsax78I</a></li>
+<li><a href="https://www.openprocessing.org/sketch/157238/">https://www.openprocessing.org/sketch/157238/</a></li>
+<li><a href="https://processing.org/reference/mousePressed_.html">https://processing.org/reference/mousePressed_.html</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ilusión-secuencias"></a><a href="#ilusión-secuencias" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilusión: secuencias</h2>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Optical_Illusion">código fuente</a></p>
+<pre><code class="hljs"><span class="hljs-built_in">float</span> angle;
+
+<span class="hljs-keyword">void</span> <span class="hljs-title">setup</span>(){
+  <span class="hljs-built_in">size</span>(<span class="hljs-number">963</span>,<span class="hljs-number">850</span>);
+  surface.setLocation(<span class="hljs-number">957</span>, <span class="hljs-number">0</span>);
+  <span class="hljs-built_in">noStroke</span>();
+  <span class="hljs-built_in">fill</span>(<span class="hljs-number">0</span>, <span class="hljs-number">15</span>, <span class="hljs-number">30</span>);
+}
+
+<span class="hljs-keyword">void</span> <span class="hljs-title">draw</span>(){
+  <span class="hljs-built_in">background</span>(<span class="hljs-number">255</span>);
+  
+  <span class="hljs-built_in">float</span> x = <span class="hljs-built_in">width</span>;
+  <span class="hljs-built_in">float</span> dia = <span class="hljs-number">110</span>;
+  <span class="hljs-built_in">int</span> num = <span class="hljs-number">100</span>;
+  
+  <span class="hljs-built_in">translate</span>(<span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-built_in">height</span>/<span class="hljs-number">2</span>);
+  <span class="hljs-keyword">for</span>(<span class="hljs-built_in">float</span> a=<span class="hljs-number">0</span>; a&lt;<span class="hljs-number">360</span>; a+=<span class="hljs-number">22.5</span>){
+    <span class="hljs-built_in">rotate</span>(<span class="hljs-built_in">radians</span>(a));
+    <span class="hljs-built_in">pushMatrix</span>();
+    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>; i&lt;num; i++){
+      <span class="hljs-built_in">scale</span>(<span class="hljs-number">0.95</span>);
+      <span class="hljs-built_in">rotate</span>(<span class="hljs-built_in">radians</span>(angle));
+      <span class="hljs-built_in">ellipse</span>(x, <span class="hljs-number">0</span>, dia, dia);
+    }
+    <span class="hljs-built_in">popMatrix</span>();
+    <span class="hljs-built_in">pushMatrix</span>();
+    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>; i&lt;num; i++){
+      <span class="hljs-built_in">scale</span>(<span class="hljs-number">0.95</span>);
+      <span class="hljs-built_in">rotate</span>(-<span class="hljs-built_in">radians</span>(angle));
+      <span class="hljs-built_in">ellipse</span>(x, <span class="hljs-number">0</span>, dia, dia);
+    }
+    <span class="hljs-built_in">popMatrix</span>();
+  }
+  angle+=<span class="hljs-number">0.01</span>;
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="ilusión-4"></a><a href="#ilusión-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ilusión</h2>
+<p>El usuario percibe diferentes secuencias de ilusiones opticas que cambian con el transcurso del tiempo.</p>
+<h2><a class="anchor" aria-hidden="true" id="interactividad-3"></a><a href="#interactividad-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interactividad</h2>
+<p>La interabilidad de esta secuencia esta dada por el transucrso del tiempo.</p>
+<h3><a class="anchor" aria-hidden="true" id="resultado-4"></a><a href="#resultado-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resultado:</h3>
+<p><img src="/docs/assets/opptical.gif" alt="alt-text"></p>
+<h3><a class="anchor" aria-hidden="true" id="referencias-4"></a><a href="#referencias-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referencias</h3>
+<ul>
+<li><a href="http://bibliotecadigital.econ.uba.ar/download/cuadcimbage/cuadcimbage_n18_04.pdf">http://bibliotecadigital.econ.uba.ar/download/cuadcimbage/cuadcimbage_n18_04.pdf</a></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="discusión"></a><a href="#discusión" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Discusión</h3>
 <h2><a class="anchor" aria-hidden="true" id="1-complete-la-tabla"></a><a href="#1-complete-la-tabla" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1 Complete la tabla</h2>
@@ -308,9 +362,10 @@ is the same as the grid, otherwise it wont work.
 <tr><td>Gradiente gris</td><td>Percepción de color</td><td><a href="https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect">https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect</a></td><td>Click del mouse</td><td><a href="https://processing.org/examples/lineargradient.html">https://processing.org/examples/lineargradient.html</a></td></tr>
 <tr><td>Triángulo de Penrose</td><td>Perspectiva geométrica</td><td><a href="https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose">https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose</a></td><td>Girar la figura en 3D</td><td>n/a</td></tr>
 <tr><td>Cuadrícula de Hermann</td><td>Simultaneous Lightness Contrast (SLC)</td><td><a href="https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula">https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula</a></td><td>n/a</td><td><a href="https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader">https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader</a></td></tr>
-<tr><td>Moiré pattern</td><td>Ilusion de movimiento</td><td><a href="https://en.wikipedia.org/wiki/Moir%C3%A9_pattern">https://en.wikipedia.org/wiki/Moir%C3%A9_pattern</a></td><td>Movimiento del mouse</td><td><a href="https://processing.org/reference/imageMode_.html">https://processing.org/reference/imageMode_.html</a></td></tr>
+<tr><td>Interactividad con click</td><td>Percepción de color</td><td><a href="https://es.wikipedia.org/wiki/Percepci%C3%B3n_del_color">https://es.wikipedia.org/wiki/Percepci%C3%B3n_del_color</a></td><td>Click del mouse</td><td><a href="https://processing.org/examples/tickle.html">https://processing.org/examples/tickle.html</a></td></tr>
+<tr><td>Secuencias</td><td>Percepción de profundidad y movimiento</td><td><a href="https://es.wikipedia.org/wiki/Ilusi%C3%B3n_%C3%B3ptica#Percepci%C3%B3n_de_profundidad_y_movimiento">https://es.wikipedia.org/wiki/Ilusi%C3%B3n_%C3%B3ptica#Percepci%C3%B3n_de_profundidad_y_movimiento</a></td><td>n/a</td><td><a href="https://processing.org/examples/sequential.html">https://processing.org/examples/sequential.html</a></td></tr>
 <tr><td>Paragraph</td><td>Text</td><td>text</td><td>text</td><td>text</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="2-describa-brevememente-las-referencias-estudiadas-y-los-posibles-temas-en-los-que-le-gustaría-profundizar"></a><a href="#2-describa-brevememente-las-referencias-estudiadas-y-los-posibles-temas-en-los-que-le-gustaría-profundizar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2 Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar</h2>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc7"><span class="arrow-prev">← </span><span>Histograma de una imagen</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ilusión-1-percepción-de-color">Ilusión 1: Percepción de color</a></li><li><a href="#ilusión">Ilusión</a></li><li><a href="#interactividad">Interactividad</a><ul class="toc-headings"><li><a href="#resultado">Resultado:</a></li><li><a href="#interactividad-al-hacer-click">Interactividad al hacer click</a></li><li><a href="#referencias">Referencias</a></li></ul></li><li><a href="#ilusión-2-triángulo-de-penrose">Ilusión 2: Triángulo de Penrose</a></li><li><a href="#ilusión-1">Ilusión</a></li><li><a href="#interactividad-1">Interactividad</a><ul class="toc-headings"><li><a href="#resultado-1">Resultado:</a></li><li><a href="#referencias-1">Referencias</a></li></ul></li><li><a href="#ilusión-3-cuadrícula-de-hermann">Ilusión 3: Cuadrícula de Hermann</a><ul class="toc-headings"><li><a href="#código-processing">Código Processing</a></li><li><a href="#fragment-shader">Fragment Shader</a></li></ul></li><li><a href="#ilusión-2">Ilusión</a><ul class="toc-headings"><li><a href="#resultado-2">Resultado:</a></li><li><a href="#referencias-2">Referencias</a></li></ul></li><li><a href="#ilusión-4-moiré-patterns">Ilusión 4: Moiré Patterns</a><ul class="toc-headings"><li><a href="#código-processing-1">Código Processing</a></li></ul></li><li><a href="#ilusión-3">Ilusión</a><ul class="toc-headings"><li><a href="#resultado-3">Resultado:</a></li><li><a href="#referencias-3">Referencias</a></li><li><a href="#discusión">Discusión</a></li></ul></li><li><a href="#1-complete-la-tabla">1 Complete la tabla</a></li><li><a href="#2-describa-brevememente-las-referencias-estudiadas-y-los-posibles-temas-en-los-que-le-gustaría-profundizar">2 Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc7"><span class="arrow-prev">← </span><span>Histograma de una imagen</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ilusión-1-percepción-de-color">Ilusión 1: Percepción de color</a></li><li><a href="#ilusión">Ilusión</a></li><li><a href="#interactividad">Interactividad</a><ul class="toc-headings"><li><a href="#resultado">Resultado:</a></li><li><a href="#interactividad-al-hacer-click">Interactividad al hacer click</a></li><li><a href="#referencias">Referencias</a></li></ul></li><li><a href="#ilusión-2-triángulo-de-penrose">Ilusión 2: Triángulo de Penrose</a></li><li><a href="#ilusión-1">Ilusión</a></li><li><a href="#interactividad-1">Interactividad</a><ul class="toc-headings"><li><a href="#resultado-1">Resultado:</a></li><li><a href="#referencias-1">Referencias</a></li></ul></li><li><a href="#ilusión-3-cuadrícula-de-hermann">Ilusión 3: Cuadrícula de Hermann</a><ul class="toc-headings"><li><a href="#código-processing">Código Processing</a></li><li><a href="#fragment-shader">Fragment Shader</a></li></ul></li><li><a href="#ilusión-2">Ilusión</a><ul class="toc-headings"><li><a href="#resultado-2">Resultado:</a></li><li><a href="#referencias-2">Referencias</a></li></ul></li><li><a href="#ilusión-interactividad-con-click">Ilusión: Interactividad con click</a></li><li><a href="#ilusión-3">Ilusión</a></li><li><a href="#interactividad-2">Interactividad</a><ul class="toc-headings"><li><a href="#resultado-3">Resultado:</a></li><li><a href="#referencias-3">Referencias</a></li></ul></li><li><a href="#ilusión-secuencias">Ilusión: secuencias</a></li><li><a href="#ilusión-4">Ilusión</a></li><li><a href="#interactividad-3">Interactividad</a><ul class="toc-headings"><li><a href="#resultado-4">Resultado:</a></li><li><a href="#referencias-4">Referencias</a></li><li><a href="#discusión">Discusión</a></li></ul></li><li><a href="#1-complete-la-tabla">1 Complete la tabla</a></li><li><a href="#2-describa-brevememente-las-referencias-estudiadas-y-los-posibles-temas-en-los-que-le-gustaría-profundizar">2 Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
