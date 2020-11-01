@@ -221,6 +221,111 @@ Cuando el usuario mira la cuadrícula blanca sobre el fondo negro, se tiene la i
 - https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader
 
 
+## Ilusión: Interactividad con click
+
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/IlusionClickInteractiva)
+```
+int counter;
+int canvasHeight = 174;
+int canvasWidth = 484;
+int stripWidth = 11;
+int blockWidth = 44;
+int blockHeight = 20;
+int yYellow = 40;
+int yBlue = 130;
+
+void setup() {  //setup function called initially, only once
+  size(600, 174);
+  counter = 0;
+}
+
+void draw() {  //draw function loops 
+  background(255);  //set background white
+  if(mousePressed == false) { // make black stripes
+    fill(0);
+    for (int i=0; i<600; i = i+2*stripWidth) {
+      rect(i, 0, stripWidth, canvasHeight);
+    }
+  }
+  counter++;
+  noStroke();
+  // draw yellow rectangle
+  fill(255,255,0);
+  rect(counter, yYellow, blockWidth, blockHeight);
+  // draw yellow rectangle
+  fill(0,0,255);
+  rect(counter, yBlue, blockWidth, blockHeight);
+  // after leaving the canvas restart at left
+  if (counter == canvasWidth) {
+    counter = 0;
+  }
+}
+```
+## Ilusión
+El usuario percibe dos objetos que avanzan a la par, sin embargo con cada linea negra se observa una especie de "frenado", al hacer click las lineas desaparecen y los dos objetos avanzan constantemente.
+
+## Interactividad
+El usuario puede hacer click para desaparecer las lineas negras verticales y asi conseguir un movimiento constante en los dos objetos.
+
+### Resultado:
+![alt-text](assets/click.gif)
+
+### Referencias
+- https://www.openprocessing.org/sketch/157238/
+- https://processing.org/reference/mousePressed_.html
+
+## Ilusión: secuencias
+
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Optical_Illusion)
+```
+float angle;
+
+void setup(){
+  size(963,850);
+  surface.setLocation(957, 0);
+  noStroke();
+  fill(0, 15, 30);
+}
+
+void draw(){
+  background(255);
+  
+  float x = width;
+  float dia = 110;
+  int num = 100;
+  
+  translate(width/2, height/2);
+  for(float a=0; a<360; a+=22.5){
+    rotate(radians(a));
+    pushMatrix();
+    for(int i=0; i<num; i++){
+      scale(0.95);
+      rotate(radians(angle));
+      ellipse(x, 0, dia, dia);
+    }
+    popMatrix();
+    pushMatrix();
+    for(int i=0; i<num; i++){
+      scale(0.95);
+      rotate(-radians(angle));
+      ellipse(x, 0, dia, dia);
+    }
+    popMatrix();
+  }
+  angle+=0.01;
+}
+```
+## Ilusión
+El usuario percibe diferentes secuencias de ilusiones opticas que cambian con el transcurso del tiempo.
+
+## Interactividad
+La interabilidad de esta secuencia esta dada por el transucrso del tiempo.
+
+### Resultado:
+![alt-text](assets/opptical.gif)
+
+### Referencias
+- http://bibliotecadigital.econ.uba.ar/download/cuadcimbage/cuadcimbage_n18_04.pdf
 
 
 ### Discusión
@@ -230,6 +335,8 @@ Cuando el usuario mira la cuadrícula blanca sobre el fondo negro, se tiene la i
 | Gradiente gris | Percepción de color | https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect| Click del mouse | https://processing.org/examples/lineargradient.html
 | Triángulo de Penrose | Perspectiva geométrica| https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose | Girar la figura en 3D | n/a
 | Cuadrícula de Hermann   | Simultaneous Lightness Contrast (SLC) | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula | n/a | https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader |
+| Interactividad con click   | Percepción de color        | https://es.wikipedia.org/wiki/Percepci%C3%B3n_del_color | Click del mouse | https://processing.org/examples/tickle.html |
+| Secuencias   | Percepción de profundidad y movimiento        | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_%C3%B3ptica#Percepci%C3%B3n_de_profundidad_y_movimiento | n/a | https://processing.org/examples/sequential.html |
 | Paragraph   | Text        | text | text | text |
 
 
