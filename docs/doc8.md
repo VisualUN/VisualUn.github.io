@@ -435,14 +435,31 @@ El usuario percibe diferentes secuencias de ilusiones opticas que cambian con el
 | Ilusión     | Categoria   | Referencia     | Tipo de interactividad (si aplica)   | URL código base |
 | ----------- | ----------- | -----------    | ------------------------------------ | ----------------------------                   |
 | Gradiente gris | Percepción de color | https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect| Click del mouse | https://processing.org/examples/lineargradient.html
-| Triángulo de Penrose | Perspectiva geométrica| https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose | Girar la figura en 3D | n/a
-| Cuadrícula de Hermann   | Simultaneous Lightness Contrast (SLC) | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula | n/a | https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader |
-| Moiré pattern | Ilusion de movimiento | https://en.wikipedia.org/wiki/Moir%C3%A9_pattern | Movimiento del mouse | https://processing.org/reference/imageMode_.html |
+| Triángulo de Penrose | Perspectiva geométrica| L. S. Penrose, R. Penrose (1958). "OBJETOS IMPOSIBLES: UN TIPO ESPECIAL DE ILUSIÓN VISUAL". El British Journal of Psychology. 49 (1): 31–33. doi:10.1111/j.2044-8295.1958.tb00634.x. | Girar la figura en 3D | n/a
+| Cuadrícula de Hermann   | Simultaneous Lightness Contrast (SLC) | Qian, K., Kawabe, T., Yamada, Y. et al. The role of orientation processing in the scintillating grid illusion. Atten Percept Psychophys 74, 1020–1032 (2012). https://doi.org/10.3758/s13414-012-0295-y | n/a | https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader |
+| Moiré pattern | Ilusion de movimiento | TRossler, T., Hrabovsky, M. & Pochmon, M. Moire methods for measurement of displacement and topography. Czech J Phys 56, 101–124 (2006). https://doi.org/10.1007/s10582-006-0073-y | Movimiento del mouse | https://processing.org/reference/imageMode_.html |
 | Interactividad con click   | Percepción de color        | https://es.wikipedia.org/wiki/Percepci%C3%B3n_del_color | Click del mouse | https://processing.org/examples/tickle.html |
-| Secuencias   | Percepción de profundidad y movimiento        | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_%C3%B3ptica#Percepci%C3%B3n_de_profundidad_y_movimiento | n/a | https://processing.org/examples/sequential.html |
+| Secuencias   | Percepción de profundidad y movimiento        |L.Lazzari, P.Moulia & A.Gervasoni, APORTES DE LAS ILUSIONES ÓPTICAS A DIFERENTES
+CAMPOS DEL CONOCIMIENTO. Cuadernos del CIMBAGE Nº 18 (2016) 81-107 (2016). https://doi.org/10.1007/s10582-006-0073-y | n/a | https://processing.org/examples/sequential.html |
 | Waves   | Movimiento | https://processing.org/examples/sinewave.html | n/a | https://processing.org/examples/sinewave.html |
-| Paragraph   | Text        | text | text | text |
 
 
 
 ## 2 Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar
+Para la categoría de percepcion de color se escogio el gradiente gris basado en el efecto bezold, este efecto se basa en el principio de efecto de propagación en el cual se muestra que un color puede parecer diferente dependiendo de su relacion con los colores adyacentes, este efecto sucede cuando se intercalan pequeñas areas de color. Se utilizó esta referencia ya que explica de manera clara y con ejemplos el funcionamiento de este tipo de ilusión.
+
+En perspectiva geométrica tenemos el Triángulo de Penrose, un ejemplo clasico de ilusion visual, puesto que este triángulo es un objeto imposible ya que debido a sus propiedades no satisface ningúna figura tradicional en un espacio euclidiano ordinario. Se utilizo este libro como referencia debido a que es el articulo mismo publicado por Penrose.
+
+En contraste de luz simultanea tenemos la Cuadricula de Hemann se utilizo esta referencia puesto que este paper examina a profundidad la ilusion de reja brillante de Hemann, mediante diversos experimentos basados en la modificación de factores como la longitud de las barras, el desplazamiento lateral de las barras y el tamaño de los espacios espaciales entre las barras separadas; este paper logra darle un transfondo más amplio del credo común de que la ilusión depende de la orientación de las barras, sino que surge de las diferencias en la magnitud de la actividad de las celdas de las intersecciones y las que estan a lo largo de las barras.
+
+En ilusion de movimiento utilizamos el patron de moire, utilizamos esta referencia debido a que da una vista mucho mas exacta y amplia de las propiedades de este patron conocido, así como los principios de su origen, todo esto aplicados para comprender mucho mas del ejercicio en processing.
+
+
+
+
+En ilusion de secuencias se puso como referencia este cuaderno puesto que da un panorama muy amplio y acertado de las diferentes ilusiones opticas que existen, ya sean fisiólogicas, cognitivas 
+
+
+
+
+
