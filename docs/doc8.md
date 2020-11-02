@@ -327,6 +327,60 @@ La interabilidad de esta secuencia esta dada por el transucrso del tiempo.
 ### Referencias
 - http://bibliotecadigital.econ.uba.ar/download/cuadcimbage/cuadcimbage_n18_04.pdf
 
+## Ilusión: Waves
+
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/waves)
+```
+int xspacing = 16; 
+int w;
+
+float theta = 0.0;
+float amplitude = 75.0;
+float period = 500.0;
+float dx;
+float[] yvalues;
+
+void setup() {
+  size(640, 360);
+  w = width+16;
+  dx = (TWO_PI / period) * xspacing;
+  yvalues = new float[w/xspacing];
+}
+
+void draw() {
+  background(0);
+  calcWave();
+  renderWave();
+}
+
+void calcWave() {
+  theta += 0.02;
+
+  float x = theta;
+  for (int i = 0; i < yvalues.length; i++) {
+    yvalues[i] = sin(x*2)*amplitude;
+    x+=dx;
+  }
+}
+
+void renderWave() {
+  noStroke();
+  fill(255);
+  for (int x = 0; x < yvalues.length; x++) {
+    ellipse(x*xspacing, height/2+yvalues[x], 16+(abs(yvalues[x]))/50, 16);
+  }
+}
+```
+## Ilusión
+El usuario percibe diferentes secuencias de ilusiones opticas que cambian con el transcurso del tiempo.
+
+### Resultado:
+![alt-text](assets/waves.gif)
+
+### Referencias
+- https://processing.org/examples/sinewave.html
+
+
 
 ### Discusión
 ## 1 Complete la tabla
@@ -337,6 +391,7 @@ La interabilidad de esta secuencia esta dada por el transucrso del tiempo.
 | Cuadrícula de Hermann   | Simultaneous Lightness Contrast (SLC) | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula | n/a | https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader |
 | Interactividad con click   | Percepción de color        | https://es.wikipedia.org/wiki/Percepci%C3%B3n_del_color | Click del mouse | https://processing.org/examples/tickle.html |
 | Secuencias   | Percepción de profundidad y movimiento        | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_%C3%B3ptica#Percepci%C3%B3n_de_profundidad_y_movimiento | n/a | https://processing.org/examples/sequential.html |
+| Waves   | Movimiento | https://processing.org/examples/sinewave.html | n/a | https://processing.org/examples/sinewave.html |
 | Paragraph   | Text        | text | text | text |
 
 
