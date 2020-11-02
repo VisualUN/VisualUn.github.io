@@ -220,6 +220,54 @@ Cuando el usuario mira la cuadrícula blanca sobre el fondo negro, se tiene la i
 - https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula
 - https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader
 
+## Ilusión 4: Moiré Patterns
+
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/moire)
+### Código Processing
+```
+PImage img, grid;
+/*
+*this visual ilusion works with the concept of Moire patterns, this is based on
+*interference between images where the ilusion of a moving image is done 
+*thanks to a see-through grid and an image with patterns that align with the 
+*empty spaces in the aforementioned grid
+*
+*To change to another image just change the name that is assigned
+*to the variable "img", the following images are available: dinosaurio, minecraft, 
+superman, ball, tunnel and technology
+*if you wish to add your own images you must make sure that the size of the image
+is the same as the grid, otherwise it wont work.
+*
+*original images by illusion channel brusspup
+*https://www.youtube.com/watch?v=UW5bcsax78I
+*/
+
+void setup()
+{
+  size(700,600);    
+  img = loadImage("dinosaurio.PNG"); 
+  grid = loadImage("grilla.png");
+}
+
+void draw()
+{
+  imageMode(CENTER);
+  background(255);
+  image(img, 350, 300);
+  image(grid, mouseX, 300);  
+}
+```
+
+## Ilusión
+Cuando el usuario mueve el mouse en el eje horizontal, va moviendo la grilla que esta encima de una imagen estatica, al hacer esto da la ilusion de movimiento, en este caso la de un dinosaurio caminando; esto se produce dado que los espacios vacios en la grilla se alinean con las lineas de la imagen estatica, las imagenes deben tener el mismo tamaño o el efecto no se podra ver.
+
+### Resultado:
+![alt-text](assets/dinosaurio.gif)
+
+### Referencias
+- https://en.wikipedia.org/wiki/Moir%C3%A9_pattern
+- https://www.youtube.com/watch?v=UW5bcsax78I
+
 
 ## Ilusión: Interactividad con click
 
@@ -389,6 +437,7 @@ El usuario percibe diferentes secuencias de ilusiones opticas que cambian con el
 | Gradiente gris | Percepción de color | https://twistedsifter.com/2017/12/horizontal-bar-is-single-shade-of-gray-bezold-effect| Click del mouse | https://processing.org/examples/lineargradient.html
 | Triángulo de Penrose | Perspectiva geométrica| https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Penrose | Girar la figura en 3D | n/a
 | Cuadrícula de Hermann   | Simultaneous Lightness Contrast (SLC) | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_la_cuadr%C3%ADcula | n/a | https://stackoverflow.com/questions/24772598/drawing-a-grid-in-a-webgl-fragment-shader |
+| Moiré pattern | Ilusion de movimiento | https://en.wikipedia.org/wiki/Moir%C3%A9_pattern | Movimiento del mouse | https://processing.org/reference/imageMode_.html |
 | Interactividad con click   | Percepción de color        | https://es.wikipedia.org/wiki/Percepci%C3%B3n_del_color | Click del mouse | https://processing.org/examples/tickle.html |
 | Secuencias   | Percepción de profundidad y movimiento        | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_%C3%B3ptica#Percepci%C3%B3n_de_profundidad_y_movimiento | n/a | https://processing.org/examples/sequential.html |
 | Waves   | Movimiento | https://processing.org/examples/sinewave.html | n/a | https://processing.org/examples/sinewave.html |
