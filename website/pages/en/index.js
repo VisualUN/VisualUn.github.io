@@ -63,7 +63,7 @@ class HomeSplash extends React.Component {
         <Logo img_src={`${baseUrl}img/undraw_monitor.svg`} />
         <div className="inner">
           <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
-          <div style={{marginBottom: '13em'}}/>
+          <div style={{marginTop: '20em',marginBottom: '13em'}}/>
           <PromoSection >
             <Button href={docUrl('doc1.html')}>Conversión a escala de grises</Button>
             <Button href={docUrl('doc2.html')}>Mascaras de convolución</Button>
@@ -73,6 +73,14 @@ class HomeSplash extends React.Component {
 
           <PromoSection>
             <Button href={docUrl('doc8.html')}>Ilusiones visuales</Button>
+          </PromoSection>
+
+          <PromoSection>
+            <Button href={docUrl('doc8.html')}>Ilusiones visuales</Button>
+          </PromoSection>
+
+          <PromoSection>
+            <Button href={docUrl('doc9.html')}>Taller de Iluminación</Button>
           </PromoSection>
         </div>
       </SplashContainer>

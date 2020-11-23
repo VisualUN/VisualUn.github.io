@@ -1,7 +1,8 @@
 {
     "docs": {
         "Analisis de imagenes por software": ["doc1", "doc2", "doc3","doc7"],
-        "Ilusiones visuales": ["doc8"]
+        "Ilusiones visuales": ["doc8"],
+        "Taller Iluminación": ["doc9"]
     },
     "docs-other": {
         "First Category": ["doc4", "doc5"]

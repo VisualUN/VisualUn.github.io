@@ -25,6 +25,10 @@
         "title": "Ilusiones visuales",
         "sidebar_label": "Taller de Ilusiones visuales"
       },
+      "doc9": {
+        "title": "Iluminación",
+        "sidebar_label": "Taller de Iluminación"
+      },
       "doc4": {
         "title": "Other Document"
       },
@@ -42,6 +46,7 @@
     "categories": {
       "Analisis de imagenes por software": "Analisis de imagenes por software",
       "Ilusiones visuales": "Ilusiones visuales",
+      "Taller Iluminación": "Taller Iluminación",
       "First Category": "First Category"
     }
   },

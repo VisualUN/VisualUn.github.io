@@ -38,6 +38,7 @@ const siteConfig = {
     headerLinks: [
         { doc: 'doc1', label: 'Análisis de imágenes por software' },
         { doc: 'doc8', label: 'Ilusiones' },
+        //{ doc: 'doc9', label: 'Iluminación' },
         { doc: 'doc4', label: 'API' },
         { page: 'help', label: 'Help' },
         { blog: true, label: 'Blog' },
