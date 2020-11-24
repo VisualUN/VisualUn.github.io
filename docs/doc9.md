@@ -4,6 +4,126 @@ title: Iluminación
 sidebar_label: Taller de Iluminación
 ---
 
+## Ambient Light
+Se agrega luz ambiente roja, la cual viene de todas las direcciones por lo que para poder ver la forma 3D de las figuras que están rotando respecto al centro de la ventana se agrega una luz direccional del mismo color.
+
+Processing 
+```
+int counterForRotation=0;
+boolean isRotating = true;
+void setup(){
+  size(800,800,P3D);
+  smooth(8);
+}
+void draw(){
+  
+  if (isRotating) {
+    counterForRotation++;
+  }//if 
+  
+  background(0);
+  
+ 
+  noStroke();
+  pushMatrix();
+  rotateX(PI * 0.20);
+  translate(width/2, height/2);
+  directionalLight(128, 0, 0, 1000, 50, -300);
+  ambientLight(128,0,0,500, 500,500);
+  rotateZ(counterForRotation * 0.001 * TWO_PI);
+    ambient(255,255,0);
+    beginShape(TRIANGLES);
+    fill(255);
+    vertex(-300, -100, -100);
+    vertex(-100, -100, -100);
+    vertex(-200,    0,  100);
+
+    vertex(-100, -100, -100);
+    vertex(-100,  100, -100);
+    vertex(-200,    0,  100);
+
+    vertex(-100, 100, -100);
+    vertex(-300, 100, -100);
+    vertex(-200,   0,  100);
+
+    vertex(-300,  100, -100);
+    vertex(-300, -100, -100);
+    vertex(-200,    0,  100);
+endShape();
+    translate(100, 0);
+    sphere(100);
+  popMatrix();
+}
+
+void mousePressed() {
+  isRotating = !isRotating;
+}
+```
+![alt-text](assets/ambient_light.gif)
+
+
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/ambient_light)
+
+## Light attenuation
+Se usa un punto de luz verde y la función **lightFalloff** la cual usa la formula `falloff = 1/(constante + d*lineal + (d*d)*cuadratica)` donde d es la distancia entre el punto de luz y el vector que se esté analizando y con esto obtener el porcentaje de luz que tendrá dicho vector. Con esto se podrá obtener un efecto de atenuación de la luz a medida que el vector se aleje mas del punto de luz.
+
+Processing 
+```
+int counterForRotation=0;
+boolean isRotating = true; 
+void setup(){
+  size(800,800,P3D);
+  smooth(8);
+}
+void draw(){
+  
+  if (isRotating) {
+    counterForRotation++;
+  }//if 
+  
+  background(0);
+  noStroke();
+  pushMatrix();
+  rotateX(PI * 0.20);
+  translate(width/2, height/2);
+  lightFalloff(1.0, 0.0015, 0.000002);
+  pointLight(127, 255, 0, 0, 600, 700);
+  rotateZ(counterForRotation * 0.0005 * TWO_PI);
+ 
+    ambient(255,255,0);
+    beginShape(TRIANGLES);
+    fill(255);
+    vertex(-300, -100, -100);
+    vertex(-100, -100, -100);
+    vertex(-200,    0,  100);
+
+    vertex(-100, -100, -100);
+    vertex(-100,  100, -100);
+    vertex(-200,    0,  100);
+
+    vertex(-100, 100, -100);
+    vertex(-300, 100, -100);
+    vertex(-200,   0,  100);
+
+    vertex(-300,  100, -100);
+    vertex(-300, -100, -100);
+    vertex(-200,    0,  100);
+endShape();
+    translate(100, 0);
+    box(200);
+  popMatrix();
+}
+
+void mousePressed() {
+  isRotating = !isRotating;
+}
+```
+![alt-text](assets/light_attenuation.gif)
+
+
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/light_attenuation)
+
+
 ## Fog: Niebla mediante fragment shaders
 Se agrega niebla a una escena de un cilindro que posee una textura. En el primer ejemplo se modifica en cada frame el valor de alpha,
 que es el parámetro que se usa para interpolar en la función mix entre el valor de la textura y el color de la niebla. En el segundo
