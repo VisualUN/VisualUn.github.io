@@ -388,6 +388,218 @@ COMPARACION
 
 Link al [código fuente](https://github.com/jsensunchop/Ilumination)
 
+
+## Use up to 8 lights in the model, relating each light source with a nub node
+Se agrego iluminacion utilizando 3 lamparas
+
+
+```
+/**
+ * Inspired by the Luxo example by Jean Pierre Charalambos.
+ *
+ * There are three small lamps which are connected by nodes
+ * they have a parent reationship so if we move the father it will move their respective sons
+ *  * 
+ */
+
+import nub.primitives.*;
+import nub.core.*;
+import nub.core.constraint.*;
+import nub.processing.*;
+
+Scene scene;
+Lamp lamp;
+
+void setup() {
+  size(1000, 700, P3D);
+  scene = new Scene(this);
+  scene.fit(1);
+  lamp = new Lamp();
+}
+
+void draw() {
+  background(0);
+  lights();
+
+  //draw the lamp
+  scene.render();
+
+  //draw the ground
+  noStroke();
+  fill(120, 120, 120);
+  float nbPatches = 100;
+  normal(0, 0, 1);
+  for (int j = 0; j < nbPatches; ++j) {
+    beginShape(QUAD_STRIP);
+    for (int i = 0; i <= nbPatches; ++i) {
+      vertex((200 * (float) i / nbPatches - 100), (200 * j / nbPatches - 100));
+      vertex((200 * (float) i / nbPatches - 100), (200 * (float) (j + 1) / nbPatches - 100));
+    }
+    endShape();
+  }
+  
+}
+
+void mouseMoved() {
+  scene.mouseTag();
+}
+
+void mouseDragged() {
+  // no inertia for the nodes, but for the eye
+  if (mouseButton == LEFT) {
+    if (!scene.mouseSpinTag(0))
+      scene.mouseSpinEye(0.85);
+  } else if (mouseButton == RIGHT) {
+    if (!scene.mouseTranslateTag(0))
+      scene.mouseTranslateEye(0.85);
+  } else {
+    if (!scene.scaleTag(mouseX - pmouseX, 0))
+      scene.scaleEye(mouseX - pmouseX, 0.85);
+  }
+}
+
+void mouseWheel(MouseEvent event) {
+  scene.moveForward(event.getCount() * 20);
+}
+
+/**
+ * Lamp class inspired by the Lamp class of the Luxo example by Jean Pierre Charalambos.
+ *
+ * Add a graphics handler to an InteractiveNode to automatically pick
+ * an object. The object is described in the graphics handler procedure.
+ */
+
+class Lamp {
+  Piece[] pieces;
+
+  Lamp() {
+    pieces = new Piece[12];
+
+    for (int i = 0; i < 4; ++i) {
+      pieces[i] = new Piece();
+      node(i).setReference(i > 0 ? pieces[i - 1] : null);
+    }
+    
+    for (int i = 4; i < 8; ++i) {
+      pieces[i] = new Piece();
+      node(i).setReference(i > 0 ? pieces[i - 1] : null);
+    }
+    
+    for (int i = 8; i < 12; ++i) {
+      pieces[i] = new Piece();
+      node(i).setReference(i > 0 ? pieces[i - 1] : null);
+    }
+
+    // Initialize nodes
+    node(1).setTranslation(0, 0, 8); // Base height
+    node(2).setTranslation(0, 0, 50);  // Arm length
+    node(3).setTranslation(0, 0, 50);  // Arm length
+    
+    node(4).setTranslation(0, 0, 8); // Base height
+    node(5).setTranslation(0, 0, 50);  // Arm length
+    node(6).setTranslation(0, 0, 50);  // Arm length
+    
+    node(7).setTranslation(0, 0, 8); // Base height
+    node(8).setTranslation(0, 0, 50);  // Arm length
+    node(9).setTranslation(0, 0, 50);  // Arm length
+    
+
+    node(1).setRotation(Quaternion.from(Vector.plusI, 0.6));
+    node(2).setRotation(Quaternion.from(Vector.plusI, -2));
+    node(3).setRotation(Quaternion.from(new Vector(1, -0.3, 0), -1.7));
+    
+    node(5).setRotation(Quaternion.from(Vector.plusI, -2));
+    node(6).setRotation(Quaternion.from(new Vector(1, -0.3, 0), -1.7));
+    node(7).setRotation(Quaternion.from(Vector.plusI, 0.6));
+    
+    node(9).setRotation(Quaternion.from(Vector.plusI, -2));
+    node(10).setRotation(Quaternion.from(new Vector(1, -0.3, 0), -1.7));
+    node(11).setRotation(Quaternion.from(Vector.plusI, 0.6));
+    
+
+    // Set node graphics modes
+    node(3).mode = 3;
+    node(7).mode = 3;
+    node(11).mode = 3;
+
+    // Set node constraints
+    WorldConstraint baseConstraint = new WorldConstraint();
+    baseConstraint.setTranslationConstraint(AxisPlaneConstraint.Type.PLANE, Vector.plusK);
+    baseConstraint.setRotationConstraint(AxisPlaneConstraint.Type.AXIS, Vector.plusK);
+    node(0).setConstraint(baseConstraint);
+    node(4).setConstraint(baseConstraint);
+    node(8).setConstraint(baseConstraint);
+
+    LocalConstraint XAxis = new LocalConstraint();
+    XAxis.setTranslationConstraint(AxisPlaneConstraint.Type.FORBIDDEN, Vector.zero);
+    XAxis.setRotationConstraint(AxisPlaneConstraint.Type.AXIS, Vector.plusI);
+    node(1).setConstraint(XAxis);
+    node(2).setConstraint(XAxis);
+    node(5).setConstraint(XAxis);
+    node(6).setConstraint(XAxis);
+    node(9).setConstraint(XAxis);
+    node(10).setConstraint(XAxis);
+
+    LocalConstraint headConstraint = new LocalConstraint();
+    headConstraint.setTranslationConstraint(AxisPlaneConstraint.Type.FORBIDDEN, Vector.zero);
+    
+  }
+
+  Piece node(int i) {
+    return pieces[i];
+  }
+}
+
+class Piece extends Node {
+  int mode;
+
+  void drawCone(PGraphics pg, float zMin, float zMax, float r1, float r2, int nbSub) {
+    pg.translate(0, 0, zMin);
+    Scene.drawCone(pg, nbSub, 0, 0, r1, r2, zMax - zMin);
+    pg.translate(0, 0, -zMin);
+  }
+
+  @Override
+  public void graphics(PGraphics pGraphics) {
+    switch (mode) {
+    case 1:
+      pGraphics.fill(isTagged(scene) ? 255 : 255, 0, 255);
+      drawCone(pGraphics, 0, 3, 15, 15, 30);
+      drawCone(pGraphics, 3, 5, 15, 13, 30);
+      drawCone(pGraphics, 5, 7, 13, 1, 30);
+      drawCone(pGraphics, 7, 9, 1, 1, 10);
+      break;
+    case 2:
+      pGraphics.pushMatrix();
+      pGraphics.rotate(HALF_PI, 0, 1, 0);
+      drawCone(pGraphics, -5, 5, 2, 2, 20);
+      pGraphics.popMatrix();
+
+      pGraphics.translate(2, 0, 0);
+      drawCone(pGraphics, 0, 50, 1, 1, 10);
+      pGraphics.translate(-4, 0, 0);
+      drawCone(pGraphics, 0, 50, 1, 1, 10);
+      pGraphics.translate(2, 0, 0);
+      break;
+    case 3:
+      pGraphics.fill(220, 20, isTagged(scene) ? 180 : 60);
+      drawCone(pGraphics, 10, 10, 4, 4, 30);
+      drawCone(pGraphics, 6, 15, 4, 8, 30);
+      drawCone(pGraphics, 6, 17, 4, 8, 30);
+      pGraphics.spotLight(155, 255, 255, 0, 0, 0, 0, 0, 1, THIRD_PI, 1);
+      break;
+    }
+  }
+}
+
+```
+
+![alt-text](assets/Light_nub.gif)
+
+Link al [código fuente](https://github.com/VisualUN/Processing/tree/master/Lights_nub)
+
 ### Referencias
 - https://webglfundamentals.org/webgl/lessons/webgl-fog.html
 - https://vicrucann.github.io/tutorials/osg-shader-fog/
+- https://visualcomputing.github.io/nub-javadocs/nub/core/Node.html
+
