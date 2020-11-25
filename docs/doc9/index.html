@@ -401,9 +401,213 @@ PShader lightShader;
 <p>COMPARACION</p>
 <p><img src="/docs/assets/60fps.gif" alt="alt-text"></p>
 <p>Link al <a href="https://github.com/jsensunchop/Ilumination">código fuente</a></p>
+<h2><a class="anchor" aria-hidden="true" id="use-up-to-8-lights-in-the-model-relating-each-light-source-with-a-nub-node"></a><a href="#use-up-to-8-lights-in-the-model-relating-each-light-source-with-a-nub-node" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use up to 8 lights in the model, relating each light source with a nub node</h2>
+<p>Se agrego iluminacion utilizando 3 lamparas</p>
+<pre><code class="hljs"><span class="hljs-comment">/**
+ * Inspired by the Luxo example by Jean Pierre Charalambos.
+ *
+ * There are three small lamps which are connected by nodes
+ * they have a parent reationship so if we move the father it will move their respective sons
+ *  * 
+ */</span>
+
+<span class="hljs-keyword">import</span> nub.primitives.*;
+<span class="hljs-keyword">import</span> nub.core.*;
+<span class="hljs-keyword">import</span> nub.core.constraint.*;
+<span class="hljs-keyword">import</span> nub.processing.*;
+
+Scene scene;
+Lamp lamp;
+
+<span class="hljs-built_in">void</span> setup() {
+  size(<span class="hljs-number">1000</span>, <span class="hljs-number">700</span>, P3D);
+  scene = new Scene(<span class="hljs-keyword">this</span>);
+  scene.fit(<span class="hljs-number">1</span>);
+  lamp = new Lamp();
+}
+
+<span class="hljs-built_in">void</span> draw() {
+  background(<span class="hljs-number">0</span>);
+  lights();
+
+  <span class="hljs-comment">//draw the lamp</span>
+  scene.render();
+
+  <span class="hljs-comment">//draw the ground</span>
+  noStroke();
+  fill(<span class="hljs-number">120</span>, <span class="hljs-number">120</span>, <span class="hljs-number">120</span>);
+  <span class="hljs-built_in">float</span> nbPatches = <span class="hljs-number">100</span>;
+  normal(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; nbPatches; ++j) {
+    beginShape(QUAD_STRIP);
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt;= nbPatches; ++i) {
+      vertex((<span class="hljs-number">200</span> * (<span class="hljs-built_in">float</span>) i / nbPatches - <span class="hljs-number">100</span>), (<span class="hljs-number">200</span> * j / nbPatches - <span class="hljs-number">100</span>));
+      vertex((<span class="hljs-number">200</span> * (<span class="hljs-built_in">float</span>) i / nbPatches - <span class="hljs-number">100</span>), (<span class="hljs-number">200</span> * (<span class="hljs-built_in">float</span>) (j + <span class="hljs-number">1</span>) / nbPatches - <span class="hljs-number">100</span>));
+    }
+    endShape();
+  }
+  
+}
+
+<span class="hljs-built_in">void</span> mouseMoved() {
+  scene.mouseTag();
+}
+
+<span class="hljs-built_in">void</span> mouseDragged() {
+  <span class="hljs-comment">// no inertia for the nodes, but for the eye</span>
+  <span class="hljs-keyword">if</span> (mouseButton == LEFT) {
+    <span class="hljs-keyword">if</span> (!scene.mouseSpinTag(<span class="hljs-number">0</span>))
+      scene.mouseSpinEye(<span class="hljs-number">0.85</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (mouseButton == RIGHT) {
+    <span class="hljs-keyword">if</span> (!scene.mouseTranslateTag(<span class="hljs-number">0</span>))
+      scene.mouseTranslateEye(<span class="hljs-number">0.85</span>);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">if</span> (!scene.scaleTag(mouseX - pmouseX, <span class="hljs-number">0</span>))
+      scene.scaleEye(mouseX - pmouseX, <span class="hljs-number">0.85</span>);
+  }
+}
+
+<span class="hljs-built_in">void</span> mouseWheel(MouseEvent event) {
+  scene.moveForward(event.getCount() * <span class="hljs-number">20</span>);
+}
+
+<span class="hljs-comment">/**
+ * Lamp class inspired by the Lamp class of the Luxo example by Jean Pierre Charalambos.
+ *
+ * Add a graphics handler to an InteractiveNode to automatically pick
+ * an object. The object is described in the graphics handler procedure.
+ */</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-symbol">Lamp</span> {
+  Piece[] pieces;
+
+  Lamp() {
+    pieces = new Piece[<span class="hljs-number">12</span>];
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; ++i) {
+      pieces[i] = new Piece();
+      node(i).setReference(i &gt; <span class="hljs-number">0</span> ? pieces[i - <span class="hljs-number">1</span>] : <span class="hljs-literal">null</span>);
+    }
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">4</span>; i &lt; <span class="hljs-number">8</span>; ++i) {
+      pieces[i] = new Piece();
+      node(i).setReference(i &gt; <span class="hljs-number">0</span> ? pieces[i - <span class="hljs-number">1</span>] : <span class="hljs-literal">null</span>);
+    }
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">8</span>; i &lt; <span class="hljs-number">12</span>; ++i) {
+      pieces[i] = new Piece();
+      node(i).setReference(i &gt; <span class="hljs-number">0</span> ? pieces[i - <span class="hljs-number">1</span>] : <span class="hljs-literal">null</span>);
+    }
+
+    <span class="hljs-comment">// Initialize nodes</span>
+    node(<span class="hljs-number">1</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">8</span>); <span class="hljs-comment">// Base height</span>
+    node(<span class="hljs-number">2</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>);  <span class="hljs-comment">// Arm length</span>
+    node(<span class="hljs-number">3</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>);  <span class="hljs-comment">// Arm length</span>
+    
+    node(<span class="hljs-number">4</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">8</span>); <span class="hljs-comment">// Base height</span>
+    node(<span class="hljs-number">5</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>);  <span class="hljs-comment">// Arm length</span>
+    node(<span class="hljs-number">6</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>);  <span class="hljs-comment">// Arm length</span>
+    
+    node(<span class="hljs-number">7</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">8</span>); <span class="hljs-comment">// Base height</span>
+    node(<span class="hljs-number">8</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>);  <span class="hljs-comment">// Arm length</span>
+    node(<span class="hljs-number">9</span>).setTranslation(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>);  <span class="hljs-comment">// Arm length</span>
+    
+
+    node(<span class="hljs-number">1</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(Vector.plusI, <span class="hljs-number">0.6</span>));
+    node(<span class="hljs-number">2</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(Vector.plusI, <span class="hljs-number">-2</span>));
+    node(<span class="hljs-number">3</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(new Vector(<span class="hljs-number">1</span>, <span class="hljs-number">-0.3</span>, <span class="hljs-number">0</span>), <span class="hljs-number">-1.7</span>));
+    
+    node(<span class="hljs-number">5</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(Vector.plusI, <span class="hljs-number">-2</span>));
+    node(<span class="hljs-number">6</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(new Vector(<span class="hljs-number">1</span>, <span class="hljs-number">-0.3</span>, <span class="hljs-number">0</span>), <span class="hljs-number">-1.7</span>));
+    node(<span class="hljs-number">7</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(Vector.plusI, <span class="hljs-number">0.6</span>));
+    
+    node(<span class="hljs-number">9</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(Vector.plusI, <span class="hljs-number">-2</span>));
+    node(<span class="hljs-number">10</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(new Vector(<span class="hljs-number">1</span>, <span class="hljs-number">-0.3</span>, <span class="hljs-number">0</span>), <span class="hljs-number">-1.7</span>));
+    node(<span class="hljs-number">11</span>).setRotation(Quaternion.<span class="hljs-keyword">from</span>(Vector.plusI, <span class="hljs-number">0.6</span>));
+    
+
+    <span class="hljs-comment">// Set node graphics modes</span>
+    node(<span class="hljs-number">3</span>).mode = <span class="hljs-number">3</span>;
+    node(<span class="hljs-number">7</span>).mode = <span class="hljs-number">3</span>;
+    node(<span class="hljs-number">11</span>).mode = <span class="hljs-number">3</span>;
+
+    <span class="hljs-comment">// Set node constraints</span>
+    WorldConstraint baseConstraint = new WorldConstraint();
+    baseConstraint.setTranslationConstraint(AxisPlaneConstraint.Type.PLANE, Vector.plusK);
+    baseConstraint.setRotationConstraint(AxisPlaneConstraint.Type.AXIS, Vector.plusK);
+    node(<span class="hljs-number">0</span>).setConstraint(baseConstraint);
+    node(<span class="hljs-number">4</span>).setConstraint(baseConstraint);
+    node(<span class="hljs-number">8</span>).setConstraint(baseConstraint);
+
+    LocalConstraint XAxis = new LocalConstraint();
+    XAxis.setTranslationConstraint(AxisPlaneConstraint.Type.FORBIDDEN, Vector.zero);
+    XAxis.setRotationConstraint(AxisPlaneConstraint.Type.AXIS, Vector.plusI);
+    node(<span class="hljs-number">1</span>).setConstraint(XAxis);
+    node(<span class="hljs-number">2</span>).setConstraint(XAxis);
+    node(<span class="hljs-number">5</span>).setConstraint(XAxis);
+    node(<span class="hljs-number">6</span>).setConstraint(XAxis);
+    node(<span class="hljs-number">9</span>).setConstraint(XAxis);
+    node(<span class="hljs-number">10</span>).setConstraint(XAxis);
+
+    LocalConstraint headConstraint = new LocalConstraint();
+    headConstraint.setTranslationConstraint(AxisPlaneConstraint.Type.FORBIDDEN, Vector.zero);
+    
+  }
+
+  Piece node(<span class="hljs-built_in">int</span> i) {
+    <span class="hljs-keyword">return</span> pieces[i];
+  }
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-symbol">Piece</span> <span class="hljs-symbol">extends</span> <span class="hljs-symbol">Node</span> {
+  <span class="hljs-built_in">int</span> mode;
+
+  <span class="hljs-built_in">void</span> drawCone(PGraphics pg, <span class="hljs-built_in">float</span> zMin, <span class="hljs-built_in">float</span> zMax, <span class="hljs-built_in">float</span> r1, <span class="hljs-built_in">float</span> r2, <span class="hljs-built_in">int</span> nbSub) {
+    pg.translate(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, zMin);
+    Scene.drawCone(pg, nbSub, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, r1, r2, zMax - zMin);
+    pg.translate(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, -zMin);
+  }
+
+  @Override
+  <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> graphics(PGraphics pGraphics) {
+    <span class="hljs-keyword">switch</span> (mode) {
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+      pGraphics.fill(isTagged(scene) ? <span class="hljs-number">255</span> : <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+      drawCone(pGraphics, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">15</span>, <span class="hljs-number">15</span>, <span class="hljs-number">30</span>);
+      drawCone(pGraphics, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">15</span>, <span class="hljs-number">13</span>, <span class="hljs-number">30</span>);
+      drawCone(pGraphics, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">13</span>, <span class="hljs-number">1</span>, <span class="hljs-number">30</span>);
+      drawCone(pGraphics, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>);
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+      pGraphics.pushMatrix();
+      pGraphics.rotate(HALF_PI, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);
+      drawCone(pGraphics, <span class="hljs-number">-5</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">20</span>);
+      pGraphics.popMatrix();
+
+      pGraphics.translate(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+      drawCone(pGraphics, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>);
+      pGraphics.translate(<span class="hljs-number">-4</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+      drawCone(pGraphics, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>);
+      pGraphics.translate(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+      pGraphics.fill(<span class="hljs-number">220</span>, <span class="hljs-number">20</span>, isTagged(scene) ? <span class="hljs-number">180</span> : <span class="hljs-number">60</span>);
+      drawCone(pGraphics, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">30</span>);
+      drawCone(pGraphics, <span class="hljs-number">6</span>, <span class="hljs-number">15</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">30</span>);
+      drawCone(pGraphics, <span class="hljs-number">6</span>, <span class="hljs-number">17</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">30</span>);
+      pGraphics.spotLight(<span class="hljs-number">155</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, THIRD_PI, <span class="hljs-number">1</span>);
+      <span class="hljs-keyword">break</span>;
+    }
+  }
+}
+
+</code></pre>
+<p><img src="/docs/assets/Light_nub.gif" alt="alt-text"></p>
+<p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/Lights_nub">código fuente</a></p>
 <h3><a class="anchor" aria-hidden="true" id="referencias"></a><a href="#referencias" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referencias</h3>
 <ul>
 <li><a href="https://webglfundamentals.org/webgl/lessons/webgl-fog.html">https://webglfundamentals.org/webgl/lessons/webgl-fog.html</a></li>
 <li><a href="https://vicrucann.github.io/tutorials/osg-shader-fog/">https://vicrucann.github.io/tutorials/osg-shader-fog/</a></li>
+<li><a href="https://visualcomputing.github.io/nub-javadocs/nub/core/Node.html">https://visualcomputing.github.io/nub-javadocs/nub/core/Node.html</a></li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc8"><span class="arrow-prev">← </span><span>Taller de Ilusiones visuales</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ambient-light">Ambient Light</a></li><li><a href="#light-attenuation">Light attenuation</a></li><li><a href="#fog-niebla-mediante-fragment-shaders">Fog: Niebla mediante fragment shaders</a></li><li><a href="#combine-all-the-simple-lighting-models-ambient-diffuse-and-specular-using-per-vertex-and-per-pixel-shaders">Combine all the simple lighting models (ambient, diffuse and specular) using per-vertex and per-pixel shaders</a><ul class="toc-headings"><li><a href="#referencias">Referencias</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc8"><span class="arrow-prev">← </span><span>Taller de Ilusiones visuales</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ambient-light">Ambient Light</a></li><li><a href="#light-attenuation">Light attenuation</a></li><li><a href="#fog-niebla-mediante-fragment-shaders">Fog: Niebla mediante fragment shaders</a></li><li><a href="#combine-all-the-simple-lighting-models-ambient-diffuse-and-specular-using-per-vertex-and-per-pixel-shaders">Combine all the simple lighting models (ambient, diffuse and specular) using per-vertex and per-pixel shaders</a></li><li><a href="#use-up-to-8-lights-in-the-model-relating-each-light-source-with-a-nub-node">Use up to 8 lights in the model, relating each light source with a nub node</a><ul class="toc-headings"><li><a href="#referencias">Referencias</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
