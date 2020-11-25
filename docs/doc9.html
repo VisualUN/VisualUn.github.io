@@ -294,9 +294,116 @@ PShader fogShader;
 <p>El color de la niebla es un parámetro que se le envía al fragment shader y puede ser modificado.</p>
 <p><img src="/docs/assets/green_fog.gif" alt="alt-text"></p>
 <p>Link al <a href="https://github.com/VisualUN/Processing/tree/master/fog_w">código fuente</a></p>
+<h2><a class="anchor" aria-hidden="true" id="combine-all-the-simple-lighting-models-ambient-diffuse-and-specular-using-per-vertex-and-per-pixel-shaders"></a><a href="#combine-all-the-simple-lighting-models-ambient-diffuse-and-specular-using-per-vertex-and-per-pixel-shaders" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Combine all the simple lighting models (ambient, diffuse and specular) using per-vertex and per-pixel shaders</h2>
+<p>Se agrego iluminacion combinando ambient, diffuse y specular. Para el primer ejemplo se usa per-pixel en una can basada en un ejemplo de clase,
+para el segundo ejemplo se hace algo parecido con la misma can pero en este caso se hace uso de per-vertex. En la ultima parte se hace una comparacion de amabas
+iluminaciones.</p>
+<p>Per-Pixel</p>
+<pre><code class="hljs"><span class="hljs-built_in">PShape</span> can;
+<span class="hljs-built_in">float</span> angle;
+
+PShader pixlightShader;
+
+<span class="hljs-keyword">void</span> <span class="hljs-title">setup</span>() {
+  <span class="hljs-built_in">size</span>(<span class="hljs-number">640</span>, <span class="hljs-number">360</span>, <span class="hljs-literal">P3D</span>);
+  can = createCan(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">32</span>);
+  pixlightShader = <span class="hljs-built_in">loadShader</span>(<span class="hljs-string">"pixlightfrag.glsl"</span>, <span class="hljs-string">"pixlightvert.glsl"</span>);
+}
+
+<span class="hljs-keyword">void</span> <span class="hljs-title">draw</span>() {    
+  <span class="hljs-built_in">background</span>(<span class="hljs-number">0</span>);
+  
+
+  
+  <span class="hljs-comment">//pointLight(255, 200, 10, width/2, height, 200);</span>
+ 
+  <span class="hljs-comment">//pointLight(51, 102, 126, 35, 40, 36);</span>
+  <span class="hljs-built_in">pointLight</span>(<span class="hljs-number">51</span>, <span class="hljs-number">102</span>, <span class="hljs-number">126</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">height</span>/<span class="hljs-number">2</span>, <span class="hljs-number">36</span>);
+  <span class="hljs-built_in">pointLight</span>(<span class="hljs-number">51</span>, <span class="hljs-number">102</span>, <span class="hljs-number">126</span>, <span class="hljs-built_in">width</span>, <span class="hljs-built_in">height</span>/<span class="hljs-number">2</span>, <span class="hljs-number">36</span>);
+  <span class="hljs-comment">//pointLight(51, 102, 126, width, height/2, 36);</span>
+  <span class="hljs-built_in">shader</span>(pixlightShader);
+  
+  <span class="hljs-built_in">translate</span>(<span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-built_in">height</span>/<span class="hljs-number">2</span>);
+  <span class="hljs-built_in">rotateY</span>(angle);  
+  <span class="hljs-built_in">shape</span>(can);  
+  angle += <span class="hljs-number">0.01</span>;
+}
+
+<span class="hljs-built_in">PShape</span> createCan(<span class="hljs-built_in">float</span> r, <span class="hljs-built_in">float</span> h, <span class="hljs-built_in">int</span> detail) {
+  <span class="hljs-built_in">textureMode</span>(NORMAL);
+  <span class="hljs-built_in">PShape</span> sh = <span class="hljs-built_in">createShape</span>();
+  sh.<span class="hljs-built_in">beginShape</span>(QUAD_STRIP);
+  sh.<span class="hljs-built_in">noStroke</span>();
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt;= detail; i++) {
+    <span class="hljs-built_in">float</span> angle = <span class="hljs-literal">TWO_PI</span> / detail;
+    <span class="hljs-built_in">float</span> x = <span class="hljs-built_in">sin</span>(i * angle);
+    <span class="hljs-built_in">float</span> z = <span class="hljs-built_in">cos</span>(i * angle);
+    <span class="hljs-built_in">float</span> u = <span class="hljs-built_in">float</span>(i) / detail;
+    sh.<span class="hljs-built_in">normal</span>(x, <span class="hljs-number">0</span>, z);
+    sh.<span class="hljs-built_in">vertex</span>(x * r, -h/<span class="hljs-number">2</span>, z * r, u, <span class="hljs-number">0</span>);
+    sh.<span class="hljs-built_in">vertex</span>(x * r, +h/<span class="hljs-number">2</span>, z * r, u, <span class="hljs-number">1</span>);    
+  }
+  sh.<span class="hljs-built_in">endShape</span>(); 
+  <span class="hljs-keyword">return</span> sh;
+}
+</code></pre>
+<p><img src="/docs/assets/pix.gif" alt="alt-text"></p>
+<p>Per-Vertex</p>
+<pre><code class="hljs"><span class="hljs-built_in">PShape</span> can;
+<span class="hljs-built_in">float</span> angle;
+
+PShader lightShader;
+
+<span class="hljs-keyword">void</span> <span class="hljs-title">setup</span>() {
+  <span class="hljs-built_in">size</span>(<span class="hljs-number">640</span>, <span class="hljs-number">360</span>, <span class="hljs-literal">P3D</span>);
+  can = createCan(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">32</span>);
+  lightShader = <span class="hljs-built_in">loadShader</span>(<span class="hljs-string">"lightfrag.glsl"</span>, <span class="hljs-string">"lightvert.glsl"</span>);
+}
+
+<span class="hljs-keyword">void</span> <span class="hljs-title">draw</span>() {    
+  <span class="hljs-built_in">background</span>(<span class="hljs-number">0</span>);
+  
+
+  
+  <span class="hljs-comment">//pointLight(255, 200, 10, width/2, height, 200);</span>
+ 
+  <span class="hljs-comment">//pointLight(51, 102, 126, 35, 40, 36);</span>
+  <span class="hljs-built_in">pointLight</span>(<span class="hljs-number">51</span>, <span class="hljs-number">102</span>, <span class="hljs-number">126</span>, <span class="hljs-number">0</span>, <span class="hljs-built_in">height</span>/<span class="hljs-number">2</span>, <span class="hljs-number">36</span>);
+  <span class="hljs-built_in">pointLight</span>(<span class="hljs-number">51</span>, <span class="hljs-number">102</span>, <span class="hljs-number">126</span>, <span class="hljs-built_in">width</span>, <span class="hljs-built_in">height</span>/<span class="hljs-number">2</span>, <span class="hljs-number">36</span>);
+  <span class="hljs-comment">//pointLight(51, 102, 126, width, height/2, 36);</span>
+  <span class="hljs-built_in">shader</span>(lightShader);
+  
+  <span class="hljs-built_in">translate</span>(<span class="hljs-built_in">width</span>/<span class="hljs-number">2</span>, <span class="hljs-built_in">height</span>/<span class="hljs-number">2</span>);
+  <span class="hljs-built_in">rotateY</span>(angle);  
+  <span class="hljs-built_in">shape</span>(can);  
+  angle += <span class="hljs-number">0.01</span>;
+}
+
+<span class="hljs-built_in">PShape</span> createCan(<span class="hljs-built_in">float</span> r, <span class="hljs-built_in">float</span> h, <span class="hljs-built_in">int</span> detail) {
+  <span class="hljs-built_in">textureMode</span>(NORMAL);
+  <span class="hljs-built_in">PShape</span> sh = <span class="hljs-built_in">createShape</span>();
+  sh.<span class="hljs-built_in">beginShape</span>(QUAD_STRIP);
+  sh.<span class="hljs-built_in">noStroke</span>();
+  <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt;= detail; i++) {
+    <span class="hljs-built_in">float</span> angle = <span class="hljs-literal">TWO_PI</span> / detail;
+    <span class="hljs-built_in">float</span> x = <span class="hljs-built_in">sin</span>(i * angle);
+    <span class="hljs-built_in">float</span> z = <span class="hljs-built_in">cos</span>(i * angle);
+    <span class="hljs-built_in">float</span> u = <span class="hljs-built_in">float</span>(i) / detail;
+    sh.<span class="hljs-built_in">normal</span>(x, <span class="hljs-number">0</span>, z);
+    sh.<span class="hljs-built_in">vertex</span>(x * r, -h/<span class="hljs-number">2</span>, z * r, u, <span class="hljs-number">0</span>);
+    sh.<span class="hljs-built_in">vertex</span>(x * r, +h/<span class="hljs-number">2</span>, z * r, u, <span class="hljs-number">1</span>);    
+  }
+  sh.<span class="hljs-built_in">endShape</span>(); 
+  <span class="hljs-keyword">return</span> sh;
+}
+</code></pre>
+<p><img src="/docs/assets/sinpix.gif" alt="alt-text"></p>
+<p>COMPARACION</p>
+<p><img src="/docs/assets/60fps.gif" alt="alt-text"></p>
+<p>Link al <a href="https://github.com/jsensunchop/Ilumination">código fuente</a></p>
 <h3><a class="anchor" aria-hidden="true" id="referencias"></a><a href="#referencias" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referencias</h3>
 <ul>
 <li><a href="https://webglfundamentals.org/webgl/lessons/webgl-fog.html">https://webglfundamentals.org/webgl/lessons/webgl-fog.html</a></li>
 <li><a href="https://vicrucann.github.io/tutorials/osg-shader-fog/">https://vicrucann.github.io/tutorials/osg-shader-fog/</a></li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc8"><span class="arrow-prev">← </span><span>Taller de Ilusiones visuales</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ambient-light">Ambient Light</a></li><li><a href="#light-attenuation">Light attenuation</a></li><li><a href="#fog-niebla-mediante-fragment-shaders">Fog: Niebla mediante fragment shaders</a><ul class="toc-headings"><li><a href="#referencias">Referencias</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/doc8"><span class="arrow-prev">← </span><span>Taller de Ilusiones visuales</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ambient-light">Ambient Light</a></li><li><a href="#light-attenuation">Light attenuation</a></li><li><a href="#fog-niebla-mediante-fragment-shaders">Fog: Niebla mediante fragment shaders</a></li><li><a href="#combine-all-the-simple-lighting-models-ambient-diffuse-and-specular-using-per-vertex-and-per-pixel-shaders">Combine all the simple lighting models (ambient, diffuse and specular) using per-vertex and per-pixel shaders</a><ul class="toc-headings"><li><a href="#referencias">Referencias</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Visual UN" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/doc1.html">Getting Started (or other categories)</a><a href="/docs/doc2.html">Guides (or other categories)</a><a href="/docs/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/users">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Universidad Nacional de Colombia</section></footer></div></body></html>
